@@ -1,0 +1,31 @@
+.wle-img-container {
+  max-height : 350px ;
+}
+
+.wle-img-container img {
+  width : auto ;
+  height : auto ;
+}
+
+.awr-row .wle-heading {
+  text-align : center ;
+}
+
+.awr-row .wle-img-container img {
+  margin-right : auto ;
+  margin-left : auto ;
+}
+
+.awr-row .wle-copy-and-link {
+  text-align : center ;
+}
+
+.awr-row .wle-copy-and-link .wle-copy ,
+.awr-row .wle-copy-and-link .wle-link {
+  text-align : left ;
+  display : inline-block ;
+}
+
+.awr-row .wle-copy-and-link .wle-copy {
+  max-width : 70% ;
+}
