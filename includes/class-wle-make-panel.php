@@ -36,15 +36,27 @@ class WLE_Make_Panel {
     $alt = ( $src != "" ) ? $selector : "" ;
     $is_svg = preg_match( '/.+(\.svg$)/' , $src ) ;
     // if is_svg, control the height of the containing div, set the img height to 100%
-    $height = $is_svg ? '300px' : '' ; 
-    $max_height = isset ( $this->options[ 'image_slider_' . $this->panel_name ] ) ?
-                    $this->options[ 'image_slider_' . $this->panel_name ] : "" ; 
+    $height = $is_svg ? '300px' : '' ;
+    $max_height = $this->get_max_height() ;
     $this->container .=
       "<div class='wle-img-container' style='display: $display'>
-        <img class='img-customize {$selector} img-responsive' src='{$src}' style='max-height:{$max_height}% ; height: $height ' alt='{$alt}'>
+        <img class='img-customize {$selector} img-responsive' src='{$src}' style='max-height:{$max_height} ; height: $height ' alt='{$alt}'>
       </div> \n" ;
   }
 
+  private function get_max_height() {
+    $max_height_pixels = apply_filters( 'wle_image_max_height_in_pixels' , 300 ) ;
+    $max_height_setting = $this->get_user_height_setting() ;
+  
+    $max_height =  floor( $max_height_pixels * $max_height_setting / 100 ) ;
+    return $max_height . 'px' ; 
+  }
+
+  private function get_user_height_setting() {
+    $setting = isset ( $this->options[ 'image_slider_' . $this->panel_name ] ) ?
+                    $this->options[ 'image_slider_' . $this->panel_name ] : 1 ;
+    return $setting ;
+  }
 
   public function add_heading_section_to_container() {
     $selector = 'heading_' . $this->panel_name ;
