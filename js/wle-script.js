@@ -13,10 +13,14 @@
   }
 
   function image_and_slider_bind( panel_name ) {
+
     wp.customize( 'wle_options[image_slider_' + panel_name + ']' , function( value ) {
       value.bind( function( to ) {
-	var percentage = String( to ) + "%" ;
-	$( '.image_' + panel_name ).css( 'max-height' , ( percentage ) ) ;
+	var max_height = 300 ; //should use wp_localize_script for this 
+	var percentage = to ;
+	var img_height = Math.floor( max_height * percentage / 100 ) ;
+	var img_height_in_pixels = String( img_height ) + 'px' ; 
+	$( '.image_' + panel_name ).css( 'max-height' , img_height_in_pixels ) ;
       } ) ;
     } ) ;
 
