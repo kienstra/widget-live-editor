@@ -2,7 +2,7 @@
 Contributors: ryankienstra
 Donate link: http://jdrf.org/get-involved/ways-to-donate/
 Tags: widget, wysiwyg, live editor, svg, retina, responsive
-Requires at least: 3.8
+Requires at least: 4.0
 Tested up to: 4.0
 Stable tag: 1.0.2
 License: GPLv2 or later
