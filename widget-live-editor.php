@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' )  ) {
 }
 
 define( 'WLE_PLUGIN_SLUG' , 'widget-live-editor' ) ;
-define( 'WLE_PLUGIN_VERSION' , '1.0.0' ) ;
+define( 'WLE_PLUGIN_VERSION' , '1.0.2' ) ;
 
 load_plugin_textdomain( 'widget-live-editor' , false , basename( dirname( __FILE__ ) ) . '/languages' ) ; 
 
