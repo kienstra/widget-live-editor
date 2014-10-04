@@ -47,7 +47,6 @@ class WLE_Make_Panel {
   private function get_max_height() {
     $max_height_pixels = apply_filters( 'wle_image_max_height_in_pixels' , 300 ) ;
     $max_height_setting = $this->get_user_height_setting() ;
-  
     $max_height =  floor( $max_height_pixels * $max_height_setting / 100 ) ;
     return $max_height . 'px' ; 
   }
