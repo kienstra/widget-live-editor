@@ -50,7 +50,7 @@ function wle_plugin_setting_anchor_text_output() {
   $options = get_option( 'wle_plugin_options' ) ;
   $anchor_text = isset( $options[ 'anchor_text' ] ) ? $options[ 'anchor_text' ] : "" ; 
   ?>
-    <input type="text" id="anchor_text" value="<?php echo $anchor_text ?>" name="wle_plugin_options[anchor_text]" placeholder="<?php _e( 'Read more' , 'widget-live-editor' ) ; ?>"/>
+    <input type="text" id="anchor_text" value="<?php echo esc_attr( $anchor_text ); ?>" name="wle_plugin_options[anchor_text]" placeholder="<?php _e( 'Read more' , 'widget-live-editor' ) ; ?>"/>
   <?php
 }   	    
 
@@ -58,7 +58,7 @@ function wle_plugin_setting_anchor_class_output() {
   $options = get_option( 'wle_plugin_options' ) ;
   $anchor_class = isset( $options[ 'anchor_class' ] ) ? $options[ 'anchor_class' ] : "" ; 
   ?>
-    <input type="text" name="wle_plugin_options[anchor_class]" value="<?php echo $anchor_class ; ?>" placeholder="btn btn-primary btn-med" />
+    <input type="text" name="wle_plugin_options[anchor_class]" value="<?php echo esc_attr( $anchor_class ); ?>" placeholder="btn btn-primary btn-med" />
     <p><?php _e( 'If more than one, separate with space or commas' , 'widget-live-editor' ) ; ?></p>
 <?php
 }

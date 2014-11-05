@@ -18,6 +18,7 @@ See widgets on your page as you edit them. Resize any image, and enter text. Lin
 * Easy: Click the widget's "edit" link on your page. No need for admin menus. Move the widget or add a new one. 
 * Flexible: Each widget can have an image, heading, text, and/or a link. One widget could be only an image and a link to your "Contact" page. Or only a heading, text, and a link to a blog post. 
 * Responsive: Looks good at any size. Perfect for Bootstrap themes, where widgets can have most of the content. Use vector images for retina displays.
+
 [youtube www.youtube.com/watch?v=DDtClYx9BgY]
 
 == Installation ==
