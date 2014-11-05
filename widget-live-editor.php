@@ -12,20 +12,20 @@ License: GPLv2
 */
 
 if ( ! defined( 'WPINC' ) ) {
-	die ;
+	die;
 }
 
-define( 'WLE_PLUGIN_SLUG' , 'widget-live-editor' ) ;
-define( 'WLE_PLUGIN_VERSION' , '1.0.2' ) ;
+define( 'WLE_PLUGIN_SLUG' , 'widget-live-editor' );
+define( 'WLE_PLUGIN_VERSION' , '1.0.2' );
 
-load_plugin_textdomain( 'widget-live-editor' , false , basename( dirname( __FILE__ ) ) . '/languages' ) ;
+load_plugin_textdomain( 'widget-live-editor' , false , basename( dirname( __FILE__ ) ) . '/languages' );
 
-add_action( 'wp_enqueue_scripts' , 'wle_enqueue_style' ) ;
+add_action( 'wp_enqueue_scripts' , 'wle_enqueue_style' );
 function wle_enqueue_style() {
-	wp_enqueue_style( WLE_PLUGIN_SLUG . '-style' , plugins_url( '/css/wle-style.css' , __FILE__ ) , array() , WLE_PLUGIN_VERSION ) ;
+	wp_enqueue_style( WLE_PLUGIN_SLUG . '-style' , plugins_url( '/css/wle-style.css' , __FILE__ ) , array() , WLE_PLUGIN_VERSION );
 }
 
-register_activation_hook( __FILE__ , 'wle_activate_with_default_options' ) ;
+register_activation_hook( __FILE__ , 'wle_activate_with_default_options' );
 function wle_activate_with_default_options() {
 	$wle_plugin_options = array(
 	'anchor_text' => "Read more" ,
@@ -35,16 +35,16 @@ function wle_activate_with_default_options() {
 		'allow_video' => 0 ,
 	);
 
-	add_option( 'wle_options' ) ;
-	add_option( 'wle_plugin_options' , $wle_plugin_options ) ;
+	add_option( 'wle_options' );
+	add_option( 'wle_plugin_options' , $wle_plugin_options );
 }
 
-register_activation_hook( __FILE__ , 'wle_deactivate_if_early_wordpress_version' ) ;
+register_activation_hook( __FILE__ , 'wle_deactivate_if_early_wordpress_version' );
 function wle_deactivate_if_early_wordpress_version() {
 	if ( version_compare( get_bloginfo( 'version' ) , '4.0' , '<' ) ) {
-		deactivate_plugins( basename( __FILE__ ) ) ;
+		deactivate_plugins( basename( __FILE__ ) );
 	}
 }
 
-include_once( plugin_dir_path( __FILE__ ) . 'class-widget-live-editor.php' ) ;
-Widget_Live_Editor::get_instance() ;
+include_once( plugin_dir_path( __FILE__ ) . 'class-widget-live-editor.php' );
+Widget_Live_Editor::get_instance();

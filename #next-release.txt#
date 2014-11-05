@@ -25,7 +25,7 @@ BSG : know exclude gallery images from post carousel
 			no controls if only one image on page
 			Make a pop-up of all image on page, except for gallery images. Each gallery gets its own.
 				php : exclude gallery items in post, same in js, maybe .not( '.gallery-item'	)	
-	php fine, just add a conditional to enqueue the js ; if page has images
+	php fine, just add a conditional to enqueue the js; if page has images
 	javascript needs to be refactored
 						just find the ordinal of the image on the page, excluding gallery images, and activate that in the gallery
 		 need a marker for top of post , to exclude sidebar or header images
