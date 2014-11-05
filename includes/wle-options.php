@@ -67,7 +67,7 @@ function wle_plugin_setting_anchor_class_output() {
 add_filter( 'plugin_action_links' , 'wle_add_settings_link' , 2 , 2 );
 function wle_add_settings_link( $actions, $file ) {
 	 if ( false !== strpos( $file, WLE_PLUGIN_SLUG ) ) {
-		$options_url = admin_url( 'options-general.php?page=wle_options_page' ) ;
+		$options_url = admin_url( 'options-general.php?page=wle_options_page' );
 		$customizer_url = admin_url( 'customize.php?wle_first_sidebar=true' );
 		$actions[ 'settings' ] = "<a href='{$options_url}'>" . __( 'Settings' , 'widget-live-editor' ) . "</a>";
 	}
