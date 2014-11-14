@@ -11,7 +11,7 @@ function wle_register_classes( $wp_customize ) {
 					<span class="customize-control-title">
 						<?php echo esc_html( $this->label ); ?>
 					</span>
-					<?php $images_query = new WP_Query( array( 'post_type' => 'attachment' , 'post_status' => 'inherit', 'post_mime_type' => 'image' , 'posts_per_page' => -1 ) );
+					<?php $images_query = new WP_Query( array( 'post_type' => 'attachment' , 'post_status' => 'inherit', 'post_mime_type' => 'image' , 'posts_per_page' => 100 ) );
 					if ( $images_query->have_posts() ) :
 				?>
 						<select <?php echo $this->get_link(); ?> class="image-selector" >
@@ -42,7 +42,7 @@ function wle_register_classes( $wp_customize ) {
 					<span class="customize-control-title">
 						<?php echo esc_html( $this->label ); ?>
 					</span>
-					<?php $page_uri_query = new WP_Query( array( 'post_type' => 'page' , 'posts_per_page' => -1 ) );
+					<?php $page_uri_query = new WP_Query( array( 'post_type' => 'page' , 'posts_per_page' => 100 ) );
 					if ( $page_uri_query->have_posts() ) :
 					?>
 						<select <?php echo $this->get_link(); ?> class="image-selector" >
@@ -58,7 +58,7 @@ function wle_register_classes( $wp_customize ) {
 								endwhile;
 					endif;
 					wp_reset_postdata();
-					$post_uri_query = new WP_Query( array( 'post_type' => 'post' , 'posts_per_page' => -1 ) );
+					$post_uri_query = new WP_Query( array( 'post_type' => 'post' , 'posts_per_page' => 100 ) );
 					if ( $post_uri_query->have_posts() ) :
 						while ( $post_uri_query->have_posts() ) :
 							$post_uri_query->the_post();
