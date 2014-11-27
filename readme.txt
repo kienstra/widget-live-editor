@@ -3,8 +3,8 @@ Contributors: ryankienstra
 Donate link: http://jdrf.org/get-involved/ways-to-donate/
 Tags: widget, wysiwyg, live editor, svg, retina, responsive
 Requires at least: 4.0
-Tested up to: 4.0
-Stable tag: 1.0.2
+Tested up to: 4.1
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ See widgets on your page as you edit them. Resize any image, and enter text. Lin
 
 == Description ==
 
-* Requires WordPress 4.0.
+* Requires at least WordPress 4.0.
 * Meant to be used with the plugin "Adapter Widget Rows" and Bootstrap 3. Creates a live-editor, drag-and-drop framework.
 * Instant Feedback: Re-size the widget's images and see text as you type.
 * Easy: Click the widget's "edit" link on your page. No need for admin menus. Move the widget or add a new one. 
@@ -53,6 +53,9 @@ No, only this plugin's widgets.
  
 == Changelog ==
 
+= 1.0.3 =
+* Stability improvement: only most recent 100 posts and images available for each widget.
+
 = 1.0.2 =
 * Fixed a bug where images were too big in Firefox and Internet Explorer.
 
@@ -69,8 +72,11 @@ No, only this plugin's widgets.
 
 == Upgrade Notice ==
 
+= 1.0.3 =
+Must have at least WordPress 4.0 to update. Stability fix. Compatible with WordPress 4.1.
+
 = 1.0.2 =
-Must have WordPress 4.0 to update.
+Must have WordPress at least 4.0 to update.
 Bug fix for image size in Internet Explorer and Firefox.
 
 = 1.0.1 =

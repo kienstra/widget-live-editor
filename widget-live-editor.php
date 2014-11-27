@@ -4,7 +4,7 @@
 Plugin Name: Widget Live Editor
 Plugin URI: www.ryankienstra.com/plugins/widget-live-editor
 Description: See instant updates as you edit. Select and resize images and vectors. Enter text, and link to any page or post.
-Version: 1.0.2
+Version: 1.0.3
 Author: Ryan Kienstra
 Author URI: www.ryankienstra.com
 License: GPLv2
@@ -16,7 +16,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'WLE_PLUGIN_SLUG' , 'widget-live-editor' );
-define( 'WLE_PLUGIN_VERSION' , '1.0.2' );
+define( 'WLE_PLUGIN_VERSION' , '1.0.3' );
 
 load_plugin_textdomain( 'widget-live-editor' , false , basename( dirname( __FILE__ ) ) . '/languages' );
 
