@@ -124,8 +124,8 @@ function wle_create_widget_customizer_section( $wp_customize ) {
 function wle_register_customizer_sections( $widgets_of_any_kind , $wp_customize ) {
 	foreach( $widgets_of_any_kind as $widget ) {
 		if ( preg_match( '/(wle-)([0-9]{1,5})/' , $widget , $matches ) ) {
-		// this is a Live Editor Widget
-		wle_register_single_customizer_section( $widget , $wp_customize );
+			// this is a Live Editor Widget
+			wle_register_single_customizer_section( $widget , $wp_customize );
 		}
 	}
 }
