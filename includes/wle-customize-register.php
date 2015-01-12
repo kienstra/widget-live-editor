@@ -75,7 +75,7 @@ function wle_register_classes( $wp_customize ) {
 		}
 	}
 
-	class PTD_Textarea_Control extends WP_Customize_Control {
+	class WLE_Textarea_Control extends WP_Customize_Control {
 		public function render_content() {
 			?>
 			<label>

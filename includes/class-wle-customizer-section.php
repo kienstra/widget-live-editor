@@ -92,7 +92,7 @@ class WLE_Customizer_Section {
 			'class_name' => 'copy-panel' ,
 		) );
 
-		$this->wp_customize->add_control( new PTD_Textarea_Control(
+		$this->wp_customize->add_control( new WLE_Textarea_Control(
 			$this->wp_customize,
 			"copy_$name",
 			array( 'label'      => __( 'Copy' , 'widget-live-editor' ) ,
