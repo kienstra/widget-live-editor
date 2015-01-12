@@ -130,9 +130,13 @@ function wle_register_customizer_sections( $widgets_of_any_kind , $wp_customize 
 	}
 }
 
-function wle_register_single_customizer_section( $widget , $wp_customize ) {
+function
+wle_register_single_customizer_section( $widget , $wp_customize ) {
 	$customizer = new WLE_Customizer_Section( $wp_customize );
-	$customizer->make_full_section( $widget , __( 'Widget Live Editor' , 'widget-live-editor' ) );
+	$customizer->make_full_section(
+		$widget ,
+		__( 'Widget Live Editor' , 'widget-live-editor' )
+	);
 }
 
 function wle_add_new_panel( $wp_customize ) {
