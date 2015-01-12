@@ -2,7 +2,7 @@
 
 add_action( 'customize_register' , 'wle_register_classes', 10 );
 function wle_register_classes( $wp_customize ) {
-	class RK_Customize_Image_Control extends WP_Customize_Control {
+	class WLE_Customize_Image_Control extends WP_Customize_Control {
 
 		public function render_content() {
 			?>
@@ -32,9 +32,9 @@ function wle_register_classes( $wp_customize ) {
 					echo __( 'Please' , 'widget-live-editor' ) . "<a href='media-new.php'>" . __( ' upload images' , 'widget-live-editor' ) . "</a>";
 				endif;
 		}
-	} /* end class RK_Customize_Image_Control */
+	} /* end class WLE_Customize_Image_Control */
 
-	class RK_Customize_Link_Control extends WP_Customize_Control {
+	class WLE_Customize_Link_Control extends WP_Customize_Control {
 		public function render_content() {
 			?>
 			<label>
@@ -92,7 +92,7 @@ function wle_register_classes( $wp_customize ) {
 		}
 	}
 
-	class RK_Customize_Image_Slider extends WP_Customize_Control {
+	class WLE_Customize_Image_Slider extends WP_Customize_Control {
 		public function render_content() {
 			?>
 			<span class="customize-control-title">

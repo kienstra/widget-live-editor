@@ -44,7 +44,7 @@ class WLE_Customizer_Section {
 			'transport'  => 'postMessage',
 		) );
 
-		$this->wp_customize->add_control( new RK_Customize_Image_Control(
+		$this->wp_customize->add_control( new WLE_Customize_Image_Control(
 			$this->wp_customize,
 			"image_$name",
 			array( 'label'    => __( 'Image' , 'widget-live-editor' ) ,
@@ -59,7 +59,7 @@ class WLE_Customizer_Section {
 			'transport'  => 'postMessage',
 		) );
 
-		$this->wp_customize->add_control( new RK_Customize_Image_Slider(
+		$this->wp_customize->add_control( new WLE_Customize_Image_Slider(
 			$this->wp_customize ,
 			"image_slider_$name" ,
 			array( 'label'     => '' ,
@@ -108,7 +108,7 @@ class WLE_Customizer_Section {
 			'transport'  => 'postMessage',
 		) );
 
-		$this->wp_customize->add_control( new RK_Customize_Link_Control(
+		$this->wp_customize->add_control( new WLE_Customize_Link_Control(
 			$this->wp_customize,
 			"link_href_$name",
 			array(
