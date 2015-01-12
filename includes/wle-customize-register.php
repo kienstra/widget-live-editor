@@ -121,6 +121,16 @@ function wle_create_widget_customizer_section( $wp_customize ) {
 	}
 }
 
+function wle_add_new_panel( $wp_customize ) {
+	$wp_customize->add_panel( 'wle_panel' , array(
+		'priority' => 10,
+		'capability' => 'manage_options',
+		'theme_supports' => '' ,
+		'title'	=> __( 'Live Editor Widgets' , 'widget-live-editor' ) ,
+		'description' => __( 'Edit the content' , 'widget-live-editor' ) ,
+	) );
+}
+
 function wle_register_customizer_sections( $widgets_of_any_kind , $wp_customize ) {
 	foreach( $widgets_of_any_kind as $widget ) {
 		if ( preg_match( '/(wle-)([0-9]{1,5})/' , $widget , $matches ) ) {
@@ -130,23 +140,12 @@ function wle_register_customizer_sections( $widgets_of_any_kind , $wp_customize 
 	}
 }
 
-function
-wle_register_single_customizer_section( $widget , $wp_customize ) {
+function wle_register_single_customizer_section( $widget , $wp_customize ) {
 	$customizer = new WLE_Customizer_Section( $wp_customize );
 	$customizer->make_full_section(
 		$widget ,
 		__( 'Widget Live Editor' , 'widget-live-editor' )
 	);
-}
-
-function wle_add_new_panel( $wp_customize ) {
-	$wp_customize->add_panel( 'wle_panel' , array(
-		'priority' => 10,
-		'capability' => 'manage_options',
-		'theme_supports' => '' ,
-		'title'	=> __( 'Live Editor Widgets' , 'widget-live-editor' ) ,
-		'description' => __( 'Edit the content' , 'widget-live-editor' ) ,
-	) );
 }
 
 // Allow svgs

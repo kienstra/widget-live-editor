@@ -28,7 +28,7 @@ function wle_enqueue_style() {
 register_activation_hook( __FILE__ , 'wle_activate_with_default_options' );
 function wle_activate_with_default_options() {
 	$wle_plugin_options = array(
-	'anchor_text' => "Read more" ,
+		'anchor_text' => "Read more" ,
 		'anchor_class' => "" ,
 		'alignment' => "" ,
 		'allow_vectors' => 0 ,

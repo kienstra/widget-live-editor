@@ -3,7 +3,7 @@
 /*
  * Register Widget Live Editor widgets as customizer controls
  * WLE widgets won't actually appear in the customizer as widgets.
- * They'll be in their own section, and will actually be customizer controls.
+ * They'll be in their own section, as customizer controls.
  */
 class WLE_Customizer_Section {
 	protected $wp_customize;
