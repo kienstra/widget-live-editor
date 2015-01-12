@@ -10,27 +10,27 @@ function wle_register_classes( $wp_customize ) {
 				<span class="customize-control-title">
 					<?php echo esc_html( $this->label ); ?>
 				</span>
-				<?php $images_query = new WP_Query( array( 'post_type' => 'attachment' , 'post_status' => 'inherit', 'post_mime_type' => 'image' , 'posts_per_page' => 100 ) );
-				if ( $images_query->have_posts() ) :
-			?>
-					<select <?php echo $this->get_link(); ?> class="image-selector" >
-						<option value="">--No image--</option>
-							<?php
-							while ( $images_query->have_posts() ) :
-								$images_query->the_post();
-							?>
-								<option value="<?php echo wp_get_attachment_url(); ?>" <?php selected( $this->value(), get_permalink(), false ); ?>>
-								<?php the_title(); ?>
-						</option>
+			</label>				
+			<?php $images_query = new WP_Query( array( 'post_type' => 'attachment' , 'post_status' => 'inherit', 'post_mime_type' => 'image' , 'posts_per_page' => 100 ) );
+			if ( $images_query->have_posts() ) :
+				?>
+				<select <?php echo $this->get_link(); ?> class="image-selector" >
+					<option value="">--No image--</option>
 						<?php
-						endwhile;
-					?>
-					</select>
-				</label>
-				<?php wp_reset_postdata();
-				else:
-					echo __( 'Please' , 'widget-live-editor' ) . "<a href='media-new.php'>" . __( ' upload images' , 'widget-live-editor' ) . "</a>";
-				endif;
+						while ( $images_query->have_posts() ) :
+							$images_query->the_post();
+						?>
+							<option value="<?php echo wp_get_attachment_url(); ?>" <?php selected( $this->value(), get_permalink(), false ); ?>>
+							<?php the_title(); ?>
+					</option>
+					<?php
+					endwhile;
+				?>
+				</select>
+			<?php wp_reset_postdata();
+			else:
+				echo __( 'Please' , 'widget-live-editor' ) . "<a href='media-new.php'>" . esc_html_e( ' upload images' , 'widget-live-editor' ) . "</a>";
+			endif;
 		}
 	} /* end class WLE_Customize_Image_Control */
 
