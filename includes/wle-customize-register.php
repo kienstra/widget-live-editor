@@ -11,25 +11,30 @@ function wle_register_classes( $wp_customize ) {
 					<?php echo esc_html( $this->label ); ?>
 				</span>
 			</label>				
-			<?php $images_query = new WP_Query( array( 'post_type' => 'attachment' , 'post_status' => 'inherit', 'post_mime_type' => 'image' , 'posts_per_page' => 100 ) );
+			<?php
+			$images_query = new WP_Query( array(
+				'post_type' => 'attachment' ,
+				'post_status' => 'inherit' ,
+				'post_mime_type' => 'image' ,
+				'posts_per_page' => 100 ,
+			) );
 			if ( $images_query->have_posts() ) :
 				?>
-				<select <?php echo $this->get_link(); ?> class="image-selector" >
-					<option value="">--No image--</option>
-						<?php
-						while ( $images_query->have_posts() ) :
-							$images_query->the_post();
-						?>
-							<option value="<?php echo wp_get_attachment_url(); ?>" <?php selected( $this->value(), get_permalink(), false ); ?>>
-							<?php the_title(); ?>
+				<select <?php echo $this->get_link(); ?> class="image-selector">
+					<option value="">
+						--No image--
 					</option>
-					<?php
-					endwhile;
-				?>
+					<?php while ( $images_query->have_posts() ) :
+						$images_query->the_post();
+						?>
+						<option value="<?php echo esc_url( wp_get_attachment_url() ); ?>" <?php selected( $this->value() , get_the_permalink() , false ); ?>>
+							<?php echo esc_html( get_the_title() ); ?>
+						</option>
+					<?php endwhile;	?>
 				</select>
-			<?php wp_reset_postdata();
+				<?php wp_reset_postdata();
 			else:
-				echo __( 'Please' , 'widget-live-editor' ) . "<a href='media-new.php'>" . esc_html_e( ' upload images' , 'widget-live-editor' ) . "</a>";
+				echo esc_html__( 'Please' , 'widget-live-editor' ) . "<a href='media-new.php'>" . esc_html__( ' upload images' , 'widget-live-editor' ) . "</a>";
 			endif;
 		}
 	} /* end class WLE_Customize_Image_Control */
@@ -41,36 +46,35 @@ function wle_register_classes( $wp_customize ) {
 				<span class="customize-control-title">
 					<?php echo esc_html( $this->label ); ?>
 				</span>
-				<?php $page_uri_query = new WP_Query( array( 'post_type' => 'page' , 'posts_per_page' => 100 ) );
-				if ( $page_uri_query->have_posts() ) :
-				?>
-					<select <?php echo $this->get_link(); ?> class="image-selector" >
-						<option value="">--No Link--</option>
-							<?php
-							while ( $page_uri_query->have_posts() ) :
-								$page_uri_query->the_post();
-							?>
-								<option value="<?php the_permalink(); ?>" <?php selected( $this->value(), get_permalink(), false ); ?>>
-									Page: <?php the_title(); ?>
-								</option>
-							<?php
-							endwhile;
-				endif;
-				wp_reset_postdata();
-				$post_uri_query = new WP_Query( array( 'post_type' => 'post' , 'posts_per_page' => 100 ) );
-				if ( $post_uri_query->have_posts() ) :
-					while ( $post_uri_query->have_posts() ) :
-						$post_uri_query->the_post();
+			</label>				
+			<?php $page_uri_query = new WP_Query( array( 'post_type' => 'page' , 'posts_per_page' => 100 ) ); ?>
+			<select <?php echo $this->get_link(); ?> class="image-selector" >
+			<?php if ( $page_uri_query->have_posts() ) : ?>
+				<option value="">--No Link--</option>
+					<?php
+					while ( $page_uri_query->have_posts() ) :
+						$page_uri_query->the_post();
 						?>
-						<option value="<?php the_permalink(); ?>" <?php selected( $this->value(), get_permalink(), false ); ?>>
-						Post: <?php the_title(); ?>
+						<option value="<?php the_permalink() ; ?>" <?php selected( $this->value(), get_permalink(), false ); ?>>
+							Page: <?php echo esc_html( get_the_title() ); ?>
 						</option>
-						<?php
+					<?php
 					endwhile;
-				endif;
-				?>
-				</select>
-			</label>
+			endif;
+			wp_reset_postdata();
+			$post_uri_query = new WP_Query( array( 'post_type' => 'post' , 'posts_per_page' => 100 ) );
+			if ( $post_uri_query->have_posts() ) :
+				while ( $post_uri_query->have_posts() ) :
+					$post_uri_query->the_post();
+					?>
+					<option value="<?php esc_url( get_the_permalink() ); ?>" <?php selected( $this->value(), get_permalink(), false ); ?>>
+						Post: <?php the_title(); ?>
+					</option>
+					<?php
+				endwhile;
+			endif;
+			?>
+			</select>
 		<?php
 		}
 	}
@@ -83,8 +87,8 @@ function wle_register_classes( $wp_customize ) {
 					<?php echo esc_html( $this->label ); ?>
 				</span>
 			</label>
-			<textarea class="<?php echo $this->label; ?> large-text" cols="20" rows="10" <?php $this->link(); ?>>
-				<?php echo get_option( "wle_options[ 'copy_' . $this->label ]" ); ?>
+			<textarea class="<?php echo esc_attr( $this->label ); ?> large-text" cols="20" rows="10" <?php $this->link(); ?>>
+				<?php echo esc_textarea( get_option( "wle_options[ 'copy_' . $this->label ]" ) ); ?>
 			</textarea>
 			<span>
 			</span
@@ -131,20 +135,20 @@ function wle_add_new_panel( $wp_customize ) {
 }
 
 function wle_register_customizer_sections( $widgets_of_any_kind , $wp_customize ) {
+	$customizer = new WLE_Customizer_Section( $wp_customize );
 	foreach( $widgets_of_any_kind as $widget ) {
 		if ( preg_match( '/(wle-)([0-9]{1,5})/' , $widget , $matches ) ) {
 			// this is a Live Editor Widget
-			wle_register_single_customizer_section( $widget , $wp_customize );
+			$customizer->make_full_section(
+				$widget ,
+				__( 'Widget Live Editor' , 'widget-live-editor' )
+			);		
 		}
 	}
 }
 
-function wle_register_single_customizer_section( $widget , $wp_customize ) {
-	$customizer = new WLE_Customizer_Section( $wp_customize );
-	$customizer->make_full_section(
-		$widget ,
-		__( 'Widget Live Editor' , 'widget-live-editor' )
-	);
+function wle_register_single_customizer_section( $customizer_section , $widget ) {
+	
 }
 
 // Allow svgs

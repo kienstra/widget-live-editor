@@ -14,8 +14,8 @@ class WLE_Customizer_Section {
 	}
 
 	public function make_full_section( $section_name , $title ) {
-	        $this->section_setup( $section_name , $title );
-		$this->increment_section_counter();		
+		$this->section_setup( $section_name , $title );
+		$this->increment_section_counter();
 	}
 
 	protected function section_setup( $section_name , $title ) {
@@ -114,7 +114,7 @@ class WLE_Customizer_Section {
 			array(
 				'label'    => __( 'Link To' , 'widget-live-editor' ) ,
 				'section'  => $name ,
-				'settings' =>	"wle_options[link_href_{$name}]" ,
+				'settings' => "wle_options[link_href_{$name}]" ,
 			)
 		) );
 
