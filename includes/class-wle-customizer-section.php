@@ -1,7 +1,9 @@
 <?php
 
 /*
- * Register WLE Widgets As Customizer Controls
+ * Register Widget Live Editor widgets as customizer controls
+ * WLE widgets won't actually appear in the customizer as widgets.
+ * They'll be in their own section, and will actually be customizer controls.
  */
 class WLE_Customizer_Section {
 	protected $wp_customize;
@@ -28,14 +30,13 @@ class WLE_Customizer_Section {
 
 	protected function initialize_section( $name , $title ) {
 		$this->wp_customize->add_section( $name , array(
-			'title'	=> $title ,
+			'title'	   => $title ,
 			'priority' => self::$section_counter ,
-			'panel' => 'wle_panel' ,
+			'panel'    => 'wle_panel' ,
 		) );
 	}
 
 	protected function register_image_with_slider( $name ) {
-
 		$this->wp_customize->add_setting( "wle_options[image_{$name}]" , array(
 			'default'    =>	'',
 			'type'	     => 'option' ,
@@ -52,10 +53,10 @@ class WLE_Customizer_Section {
 			) ) );
 
 		$this->wp_customize->add_setting( "wle_options[image_slider_$name]", array(
-	 		'default' => '100',
-			'type' => 'option' ,
+	 		'default'    => '100',
+			'type' 	     => 'option' ,
 			'capability' => 'manage_options' ,
-			'transport' => 'postMessage',
+			'transport'  => 'postMessage',
 		) );
 
 		$this->wp_customize->add_control( new RK_Customize_Image_Slider(
@@ -66,7 +67,7 @@ class WLE_Customizer_Section {
 			       'settings' => "wle_options[image_slider_$name]" ,
 			 )
 		) );
-	}
+	} /* end function register_image_with_slider */
 
 	protected function register_heading_and_copy( $name , $title ) {
 		$this->wp_customize->add_setting( "wle_options[heading_$name]", array(
@@ -119,4 +120,4 @@ class WLE_Customizer_Section {
 
 	}	/* end function register_heading_and_copy */
 
-}	/* end class WLE_Customizer_Section */
+}  	/* end class WLE_Customizer_Section */
