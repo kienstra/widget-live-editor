@@ -27,13 +27,13 @@ class WLE_Customizer_Section {
 	}
 
 	protected function increment_priority() {
-		self::$priority++;
+		$this->priority++;
 	}
 
 	protected function initialize_section( $name ) {
 		$this->wp_customize->add_section( $name , array(
 			'title'	   => $this->title ,
-			'priority' => self::$priority ,
+			'priority' => $this->priority ,
 			'panel'    => 'wle_panel' ,
 		) );
 	}
