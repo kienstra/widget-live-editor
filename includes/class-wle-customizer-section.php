@@ -6,7 +6,7 @@
  * They'll be in their own section, as customizer controls.
  */
 class WLE_Customizer_Section {
-	protected static $section_counter = 0;
+	protected static $priority = 0;
 	protected $title;
 	protected $wp_customize;
 
@@ -17,7 +17,7 @@ class WLE_Customizer_Section {
 
 	public function make_full_section_for( $section_name ) {
 		$this->section_setup( $section_name );
-		$this->increment_section_counter();
+		$this->increment_priority();
 	}
 
 	protected function section_setup( $section_name ) {
@@ -26,14 +26,14 @@ class WLE_Customizer_Section {
 		$this->register_heading_and_copy( $section_name );
 	}
 
-	protected function increment_section_counter() {
-		self::$section_counter++;
+	protected function increment_priority() {
+		self::$priority++;
 	}
 
 	protected function initialize_section( $name ) {
 		$this->wp_customize->add_section( $name , array(
 			'title'	   => $this->title ,
-			'priority' => self::$section_counter ,
+			'priority' => self::$priority ,
 			'panel'    => 'wle_panel' ,
 		) );
 	}
