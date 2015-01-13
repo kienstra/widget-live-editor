@@ -73,3 +73,12 @@ function wle_add_settings_link( $actions, $file ) {
 	}
 	return $actions;
 }
+
+// Allow svgs
+add_filter( 'upload_mimes', 'wle_add_svg_support' );
+function wle_add_svg_support( $mimes ){
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+
+

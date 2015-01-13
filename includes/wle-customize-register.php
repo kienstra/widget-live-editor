@@ -25,25 +25,17 @@ function wle_add_new_panel( $wp_customize ) {
 }
 
 function wle_register_customizer_sections( $widgets_of_any_kind , $wp_customize ) {
-	$customizer = new WLE_Customizer_Section(
+	$customizer_section = new WLE_Customizer_Section(
 			   __( 'Widget Live Editor' , 'widget-live-editor' ) ,
 		           $wp_customize
 	);
 	foreach( $widgets_of_any_kind as $widget ) {
 		if ( is_a_wle_widget( $widget ) ) { 
-			$customizer->make_full_section_for( $widget );
+			$customizer_section->make_full_section_for( $widget );
 		}
 	}
 }
 
 function is_a_wle_widget( $widget ) {
 	return ( preg_match( '/(wle-)([0-9]{1,5})/' , $widget , $matches ) );
-}
-
-
-// Allow svgs
-add_filter( 'upload_mimes', 'wle_add_svg_support' );
-function wle_add_svg_support( $mimes ){
-	$mimes['svg'] = 'image/svg+xml';
-	return $mimes;
 }
