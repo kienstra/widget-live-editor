@@ -6,31 +6,33 @@
  * They'll be in their own section, as customizer controls.
  */
 class WLE_Customizer_Section {
-	protected $wp_customize;
 	protected static $section_counter = 0;
+	protected $title;
+	protected $wp_customize;
 
-	public function __construct( $wp_customize ) {
+	public function __construct( $title , $wp_customize ) {
+		$this->title = $title;	
 		$this->wp_customize = $wp_customize;
 	}
 
-	public function make_full_section( $section_name , $title ) {
-		$this->section_setup( $section_name , $title );
+	public function make_full_section_for( $section_name ) {
+		$this->section_setup( $section_name );
 		$this->increment_section_counter();
 	}
 
-	protected function section_setup( $section_name , $title ) {
-		$this->initialize_section( $section_name, $title );
+	protected function section_setup( $section_name ) {
+		$this->initialize_section( $section_name );
 		$this->register_image_with_slider( $section_name );
-		$this->register_heading_and_copy( $section_name , $title );
+		$this->register_heading_and_copy( $section_name );
 	}
 
 	protected function increment_section_counter() {
 		self::$section_counter++;
 	}
 
-	protected function initialize_section( $name , $title ) {
+	protected function initialize_section( $name ) {
 		$this->wp_customize->add_section( $name , array(
-			'title'	   => $title ,
+			'title'	   => $this->title ,
 			'priority' => self::$section_counter ,
 			'panel'    => 'wle_panel' ,
 		) );
@@ -69,9 +71,9 @@ class WLE_Customizer_Section {
 		) );
 	} /* end function register_image_with_slider */
 
-	protected function register_heading_and_copy( $name , $title ) {
+	protected function register_heading_and_copy( $name ) {
 		$this->wp_customize->add_setting( "wle_options[heading_$name]", array(
-			'default'    => $title . __( ' Heading' , 'widget-live-editor' ) ,
+			'default'    => $this->title . __( ' Heading' , 'widget-live-editor' ) ,
 			'type'	     => 'option' ,
 			'capability' => 'manage_options' ,
 			'transport'  => 'postMessage' ,
@@ -85,7 +87,7 @@ class WLE_Customizer_Section {
 		) );
 
 		$this->wp_customize->add_setting( "wle_options[copy_$name]" , array(
-			'default'    => $title . __( ' Copy ' , 'widget-live-editor' ) ,
+			'default'    => $this->title . __( ' Copy ' , 'widget-live-editor' ) ,
 			'type'	     => 'option' ,
 			'capability' => 'manage_options' ,
 			'transport'  => 'postMessage' ,

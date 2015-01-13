@@ -1,8 +1,9 @@
 <?php
-/**
-Main Plugin Class
-**/
 
+/*
+ * Main Plugin Class
+ * Includes files; enqueues scripts and stylesheet
+ */
 class Widget_Live_Editor {
 
 	protected static $plugin_slug = WLE_PLUGIN_SLUG;
@@ -40,7 +41,15 @@ class Widget_Live_Editor {
 	}
 
 	private function get_included_files() {
-		$included_files = array( 'class-wle-make-panel' , 'wle-customize-register' , 'class-wp-widget-wle' , 'uri-and-localization' , 'wle-options' , 'class-wle-customizer-section' );
+		$included_files = array(
+			'class-wle-make-panel' ,
+			'wle-customizer-classes' ,
+			'wle-customize-register' ,
+			'class-wp-widget-wle' ,
+			'uri-and-localization' ,
+			'wle-options' ,
+			'class-wle-customizer-section' ,
+		);
 		foreach( $included_files as $file ) {
 			include_once( plugin_dir_path( __FILE__ ) . "includes/{$file}.php" );
 		}
