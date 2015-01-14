@@ -6,7 +6,7 @@
  * They'll be in their own section, as customizer controls.
  */
 class WLE_Customizer_Section {
-	protected static $priority = 0;
+	protected $priority = 0;
 	protected $title;
 	protected $wp_customize;
 
