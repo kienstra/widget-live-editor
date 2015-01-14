@@ -97,7 +97,7 @@ class WLE_Make_Panel {
 	}
 
 	private function add_opening_div_to_container() {
-		$url_to_customizer_of_this_page = get_url_to_customizer_of_this_page();
+		$url_to_customizer_of_this_page = wle_get_url_to_customizer_of_this_page();
 		$this->container .=
 			"<div class='customized-col' id='{$this->panel_name}' >";
 	}
