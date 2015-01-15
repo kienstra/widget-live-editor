@@ -14,12 +14,11 @@ function wle_plugin_page() {
 function wle_plugin_options_page() {
 	?>
 	<div class="wrap">
-		<?php screen_icon(); ?>
-		<h2><?php _e( 'Widget Live Editor' , 'widget-live-editor' ); ?></h2>
+		<h2><?php esc_html_e( 'Widget Live Editor' , 'widget-live-editor' ); ?></h2>
 		<form action="options.php" method="post">
 			<?php settings_fields( 'wle_plugin_options' ); ?>
 			<?php do_settings_sections( 'wle_options_page' ); ?>
-			<input name="Submit" class="button-primary" type="submit" value="<?php _e( 'Save Changes' , 'widget-live-editor' ); ?>" />
+			<input name="Submit" class="button-primary" type="submit" value="<?php esc_html_e( 'Save Changes' , 'widget-live-editor' ); ?>" />
 		</form>
 	</div>
 	<?php
