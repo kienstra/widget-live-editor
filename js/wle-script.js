@@ -1,45 +1,42 @@
 ( function ($) {
 
-	// Get all the Live Editor Widgets in the customizer iframe, and bind the changes in the customizer controls to them
-	$('.customized-col').map( function() {
-		id = $(this).attr('id');
-		bind_panel( id );
-	} );
+	var bind_panel , image_and_slider_bind , heading_and_copy_bind , link_href_bind;
 
-	function bind_panel( panel_name ) {
+	bind_panel = function ( panel_name ) {
 		image_and_slider_bind( panel_name );
 		heading_and_copy_bind( panel_name );
 		link_href_bind( panel_name );
 	}
 
-	function image_and_slider_bind( panel_name ) {
-
+	image_and_slider_bind = function ( panel_name ) {
 		wp.customize( 'wle_options[image_slider_' + panel_name + ']' , function( value ) {
 			value.bind( function( to ) {
-				var max_height = 300; //should use wp_localize_script for this 
+				var max_height = 300; 
 				var percentage = to;
 				var img_height = Math.floor( max_height * percentage / 100 );
 				var img_height_in_pixels = String( img_height ) + 'px'; 
+
 				$( '.image_' + panel_name ).css( 'max-height' , img_height_in_pixels );
 			} );
 		} );
 
 		wp.customize( 'wle_options[image_' + panel_name + ']' , function( value ) {
 			value.bind( function( to ) {
-				$image = $( '.image_' + panel_name );
-				$image.attr( 'src', to );
 				var display = ( to ) ? 'block' : 'none';
+				var $image = $( '.image_' + panel_name );
+				var is_svg = to.match( /.+\.svg$/ );
+
+				$image.attr( 'src', to );
 				$image.parent().css( 'display' , display );
 
-				is_svg = to.match( /.+\.svg$/ );
 				if ( is_svg ) {
 					$image.css( 'height' , '300px' );
 				}
 			} );
 		} );
-	}
+	} /* end function image_and_slider_bind */
 
-	function heading_and_copy_bind( panel_name ) {
+	heading_and_copy_bind = function( panel_name ) {
 		wp.customize( 'wle_options[heading_' + panel_name + ']' , function( value ) {
 			value.bind( function( to ) {
 				$( '.heading_' + panel_name ).html( to );
@@ -54,7 +51,7 @@
 		} );
 	}
 
-	function link_href_bind( panel_name ) {
+	link_href_bind = function( panel_name ) {
 		wp.customize( 'wle_options[link_href_' + panel_name + ']' , function( value ) {
 			value.bind( function( to ) {
 				var display = to ? 'inline-block' : 'none';
@@ -62,4 +59,11 @@
 			} );
 		} );
 	}
+
+	// Get all the Live Editor Widgets in the customizer iframe, and bind the changes in the customizer controls to them		
+	$('.customized-col').map( function() {
+		id = $(this).attr('id');
+		bind_panel( id );
+	} );
+	
 } )( jQuery );

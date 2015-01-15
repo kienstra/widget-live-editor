@@ -3,17 +3,18 @@
 		var widget_regex = /(wle-[\d]{1,4})/;
 		var href = document.location.href;
 		var customizer_url = url_to_customizer.url; // passed with wp_localize_script
-		var $save_prompt_with_buttons = $( '<div class="new-widget save-prompt">' +
-							'<div id="message" class="error">' +
-								'Page must reload to create widget.' +
-							'</div>' +
-							'<p>' +
-								'<a class="wle-new-save button-primary" href="#">Save changes & reload</a>' +
-							'</p>' +
-							'<p>' +
-								'<a class="wle-new-cancel button-secondary" href="#">Cancel</a>' +
-							'</p>' +
-						   '</div> <!-- .new-widget.save-prompt -->'
+		var $save_prompt_with_buttons =
+			$( '<div class="new-widget save-prompt">' +
+				'<div id="message" class="error">' +
+					'Page must reload to create widget.' +
+				'</div>' +
+				'<p>' +
+					'<a class="wle-new-save button-primary" href="#">Save changes & reload</a>' +
+				'</p>' +
+				'<p>' +
+					'<a class="wle-new-cancel button-secondary" href="#">Cancel</a>' +
+				'</p>' +
+			   '</div> <!-- .new-widget.save-prompt -->'
 		);
 
 		function show_save_prompt_after_element( $element ) {
@@ -23,7 +24,7 @@
 
 		function scroll_accordion_container_down_by( height ) {
 			var current_scroll_top = $( '.accordion-container' ).scrollTop();
-			var new_scroll_top	= current_scroll_top + height;
+			var new_scroll_top = current_scroll_top + height;
 			$( '.accordion-container' ).animate( {
 				scrollTop : new_scroll_top
 				} , 500
