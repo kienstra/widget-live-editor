@@ -1,7 +1,9 @@
 <?php
 
-// Create the Widget Live Editor markup
-// Echoed in the widget() function of class WP_Widget_WLE
+/*
+ * Create the Widget Live Editor markup
+ * Echoed in the widget() function of class WP_Widget_WLE
+ */
 
 class WLE_Make_Panel {
 	protected static $instance;
@@ -21,7 +23,7 @@ class WLE_Make_Panel {
 		return self::$instance->container;
 	}
 
-	public function make_full_section() {
+	protected function make_full_section() {
 		$this->add_opening_div_to_container();
 		$this->add_image_section_to_container();
 		$this->add_heading_section_to_container();
@@ -29,7 +31,7 @@ class WLE_Make_Panel {
 		$this->add_closing_div_to_container();
 	}
 
-	public function add_image_section_to_container() {
+	protected function add_image_section_to_container() {
 		$selector = 'image_' . $this->panel_name;
 		$src = isset( $this->options[ $selector ] ) ? $this->options[ $selector ] : "";
 		$display = $src ? 'block' : 'none';
@@ -56,8 +58,8 @@ class WLE_Make_Panel {
 					$this->options[ 'image_slider_' . $this->panel_name ] : 1;
 		return $setting;
 	}
-
-	public function add_heading_section_to_container() {
+ 
+	protected function add_heading_section_to_container() {
 		$selector = 'heading_' . $this->panel_name;
 		$heading_html = isset( $this->options[ $selector ] ) ?
 				       $this->options[ $selector ] : "";
@@ -74,7 +76,7 @@ class WLE_Make_Panel {
 		$this->container .= '</div>';
 	}
 
-	public function add_copy_section_to_container() {
+	protected function add_copy_section_to_container() {
 		$selector = 'copy_' . $this->panel_name;
 		$copy_html = isset( $this->options[ $selector ] ) ? $this->options[ $selector ] : "";
 		$this->container .=
@@ -83,7 +85,7 @@ class WLE_Make_Panel {
 			. '</span>';
 	}
 
-	public function add_link_to_container() {
+	protected function add_link_to_container() {
 		$selector = 'link_href_' . $this->panel_name;
 		$link_href = isset( $this->options[ $selector ] ) ? $this->options[ $selector ] : "";
 		$display = $link_href ? 'inline-block' : 'none';
@@ -108,4 +110,5 @@ class WLE_Make_Panel {
 	protected function add_closing_div_to_container() {
 		$this->container .= '</div>';
 	}
+	
 }	/* end WLE_Make_Panel */
