@@ -1,9 +1,9 @@
 ( function( $ ) {
 	$( function() {
-		var widget_regex = /(wle-[\d]{1,4})/;
-		var href = document.location.href;
-		var customizer_url = url_to_customizer.url; // passed with wp_localize_script
-		var $save_prompt_with_buttons =
+		var widget_regex = /(wle-[\d]{1,4})/ ,
+		    href = document.location.href ,
+		    customizer_url = url_to_customizer.url , // passed with wp_localize_script
+		    $save_prompt_with_buttons =
 			$( '<div class="new-widget save-prompt">' +
 				'<div id="message" class="error">' +
 					'Page must reload to create widget.' +
@@ -15,7 +15,7 @@
 					'<a class="wle-new-cancel button-secondary" href="#">Cancel</a>' +
 				'</p>' +
 			   '</div> <!-- .new-widget.save-prompt -->'
-		);
+		    );
 
 		function show_save_prompt_after_element( $element ) {
 			$element.append( $save_prompt_with_buttons );

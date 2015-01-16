@@ -8,22 +8,22 @@
 		link_href_bind( panel_name );
 	}
 
-	image_and_slider_bind = function ( panel_name ) {
-		wp.customize( 'wle_options[image_slider_' + panel_name + ']' , function( value ) {
+	image_and_slider_bind = function ( panelName ) {
+		wp.customize( 'wle_options[image_slider_' + panelName + ']' , function( value ) {
 			value.bind( function( to ) {
-				var max_height = 300; 
-				var percentage = to;
-				var img_height = Math.floor( max_height * percentage / 100 );
-				var img_height_in_pixels = String( img_height ) + 'px'; 
+				var maxHeight = 300,
+				    percentage = to,
+				    imgHeight = Math.floor( maxHeight * percentage / 100 ),
+				    imgHeightInPixels = String( imgHeight ) + 'px'; 
 
-				$( '.image_' + panel_name ).css( 'max-height' , img_height_in_pixels );
+				$( '.image_' + panelName ).css( 'max-height' , imgHeightInPixels );
 			} );
 		} );
 
-		wp.customize( 'wle_options[image_' + panel_name + ']' , function( value ) {
+		wp.customize( 'wle_options[image_' + panelName + ']' , function( value ) {
 			value.bind( function( to ) {
 				var display = ( to ) ? 'block' : 'none';
-				var $image = $( '.image_' + panel_name );
+				var $image = $( '.image_' + panelName );
 				var is_svg = to.match( /.+\.svg$/ );
 
 				$image.attr( 'src', to );
