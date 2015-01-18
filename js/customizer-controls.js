@@ -1,8 +1,7 @@
 ( function( $ ) {
 	$( function() {
 		var widget_regex = /(wle-[\d]{1,4})/ ,
-		    $save_prompt_with_buttons =
-			$( '<div class="new-widget save-prompt">' +
+		    $save_prompt_with_buttons =	$( '<div class="new-widget save-prompt">' +
 				'<div id="message" class="error">' +
 					'Page must reload to create widget.' +
 				'</div>' +
