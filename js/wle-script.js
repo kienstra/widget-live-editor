@@ -1,14 +1,14 @@
 ( function ($) {
 
-	var bind_panel , image_and_slider_bind , heading_and_copy_bind , link_href_bind;
+	var bindPanel , bindImageAndSlider , headingAndCopyBind , bindLinkHref;
 
-	bind_panel = function ( panel_name ) {
-		image_and_slider_bind( panel_name );
-		heading_and_copy_bind( panel_name );
-		link_href_bind( panel_name );
+	bindPanel = function ( panel_name ) {
+		bindImageAndSlider( panel_name );
+		headingAndCopyBind( panel_name );
+		bindLinkHref( panel_name );
 	}
 
-	image_and_slider_bind = function ( panelName ) {
+	bindImageAndSlider = function ( panelName ) {
 		wp.customize( 'wle_options[image_slider_' + panelName + ']' , function( value ) {
 			value.bind( function( to ) {
 				var maxHeight = 300,
@@ -34,9 +34,9 @@
 				}
 			} );
 		} );
-	} /* end function image_and_slider_bind */
+	} /* end function bindImageAndSlider */
 
-	heading_and_copy_bind = function( panel_name ) {
+	headingAndCopyBind = function( panel_name ) {
 		wp.customize( 'wle_options[heading_' + panel_name + ']' , function( value ) {
 			value.bind( function( to ) {
 				$( '.heading_' + panel_name ).html( to );
@@ -51,7 +51,7 @@
 		} );
 	}
 
-	link_href_bind = function( panel_name ) {
+	bindLinkHref = function( panel_name ) {
 		wp.customize( 'wle_options[link_href_' + panel_name + ']' , function( value ) {
 			value.bind( function( to ) {
 				var display = to ? 'inline-block' : 'none';
@@ -63,7 +63,7 @@
 	// Get all the Live Editor Widgets in the customizer iframe, and bind the changes in the customizer controls to them		
 	$('.customized-col').map( function() {
 		id = $(this).attr('id');
-		bind_panel( id );
+		bindPanel( id );
 	} );
 	
 } )( jQuery );

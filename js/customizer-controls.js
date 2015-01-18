@@ -1,8 +1,6 @@
 ( function( $ ) {
 	$( function() {
 		var widget_regex = /(wle-[\d]{1,4})/ ,
-		    href = document.location.href ,
-		    customizer_url = url_to_customizer.url , // passed with wp_localize_script
 		    $save_prompt_with_buttons =
 			$( '<div class="new-widget save-prompt">' +
 				'<div id="message" class="error">' +
@@ -23,8 +21,8 @@
 		}
 
 		function scroll_accordion_container_down_by( height ) {
-			var current_scroll_top = $( '.accordion-container' ).scrollTop();
-			var new_scroll_top = current_scroll_top + height;
+			var current_scroll_top = $( '.accordion-container' ).scrollTop() ,n
+			    new_scroll_top = current_scroll_top + height;
 			$( '.accordion-container' ).animate( {
 				scrollTop : new_scroll_top
 				} , 500
@@ -33,16 +31,17 @@
 
 		// When user adds new wle widget, a click on "edit content" triggers "Save and Publish" before redirecting to new href
 		$( '#available-widgets [id^=widget-tpl-wle]' ).on( 'click' , function() {
-			var id = $( this ).attr( 'id' );
-			var wle_target = id.match( widget_regex )[ 1 ];
 			var interval;
-			if ( wle_target ) {
+			var id = $( this ).attr( 'id' ) ,
+			    wleTarget = id.match( widget_regex )[ 1 ];
+		
+			if ( wleTarget ) {
 				interval = setInterval( manage_save_prompt , 1000 );
 			}
 
 			function manage_save_prompt() {
-				$widget_accordion = get_new_wle_widget_accordion_section();
-				$widget_form = $widget_accordion.find( '.widget-inside .form' );
+				var $widget_accordion = get_new_wle_widget_accordion_section() , 
+				    $widget_form = $widget_accordion.find( '.widget-inside .form' );
 				show_save_prompt_after_element( $widget_form );
 				clearInterval( interval ) ;
 			}
@@ -54,17 +53,19 @@
 
 
 		$( '.wle-new-save' ).live( 'click' , function( event ) {
-			event.preventDefault();
-			$( this ).addClass( 'disabled' );
-			$( '#save' ).click();
-			var widget_id = $( this ).parents( '.customize-control' ).attr( 'id' ).match( widget_regex )[ 1 ];
-			interval = setInterval( wle_check_if_saved , 2000 );
-			function wle_check_if_saved() {
+			var interval, widget_id;
+			var checkIfSaved = function() {
 				if ( is_entire_page_done_saving() ) {
 					redirect_to_customizer_with_target( widget_id );
 					clearInterval( interval );
 				}
-			}
+			}			
+			event.preventDefault();
+			$( this ).addClass( 'disabled' );
+			$( '#save' ).click();
+			widget_id = $( this ).parents( '.customize-control' ).attr( 'id' ).match( widget_regex )[ 1 ];
+			interval = setInterval( checkIfSaved , 2000 );
+			
 		} );
 
 		function redirect_to_customizer_with_target( target_id ) {
