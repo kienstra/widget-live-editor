@@ -11,9 +11,9 @@
 	bindImageAndSlider = function ( panelName ) {
 		wp.customize( 'wle_options[image_slider_' + panelName + ']' , function( value ) {
 			value.bind( function( to ) {
-				var maxHeight = 300,
-				    percentage = to,
-				    imgHeight = Math.floor( maxHeight * percentage / 100 ),
+				var maxHeight = 300 ,
+				    percentage = to ,
+				    imgHeight = Math.floor( maxHeight * percentage / 100 ) ,
 				    imgHeightInPixels = String( imgHeight ) + 'px'; 
 
 				$( '.image_' + panelName ).css( 'max-height' , imgHeightInPixels );
@@ -22,9 +22,9 @@
 
 		wp.customize( 'wle_options[image_' + panelName + ']' , function( value ) {
 			value.bind( function( to ) {
-				var display = ( to ) ? 'block' : 'none';
-				var $image = $( '.image_' + panelName );
-				var is_svg = to.match( /.+\.svg$/ );
+				var display = ( to ) ? 'block' : 'none' ,
+				    $image = $( '.image_' + panelName ) ,
+				    is_svg = to.match( /.+\.svg$/ );
 
 				$image.attr( 'src', to );
 				$image.parent().css( 'display' , display );
