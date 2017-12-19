@@ -2,13 +2,13 @@
 /**
  * Class Widget_Live_Editor
  *
- * @package AdapterResponsiveVideo
+ * @package WidgetLiveEditor
  */
 
 namespace WidgetLiveEditor;
 
 /**
- * Class Adapter_Responsive_Video
+ * Class WidgetLiveEditor
  *
  * @package WidgetLiveEditor
  */
@@ -81,6 +81,21 @@ class Widget_Live_Editor extends \WP_Widget {
 	 * @return void.
 	 */
 	public function form( $instance ) {
+		$image_src   = isset( $instance[ self::IMAGE ] ) ? $instance[ self::IMAGE ] : '';
+		$image_name  = $this->get_field_name( self::IMAGE );
+		$image_id    = $this->get_field_id( self::IMAGE );
+		$image_label = __( 'Image', 'widget-live-editor' );
+
+		$heading             = isset( $instance[ self::HEADING ] ) ? $instance[ self::HEADING ] : '';
+		$heading_name        = $this->get_field_name( self::HEADING );
+		$heading_id          = $this->get_field_id( self::HEADING );
+		$heading_placeholder = __( 'Heading', 'widget-live-editor' );
+
+		$copy      = isset( $instance[ self::COPY ] ) ? $instance[ self::COPY ] : '';
+		$copy_name = $this->get_field_name( self::COPY );
+		$copy_id   = $this->get_field_id( self::COPY );
+
+		include 'templates/form.php';
 	}
 
 	/**

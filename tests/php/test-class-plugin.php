@@ -49,7 +49,6 @@ class Test_Plugin extends \WP_UnitTestCase {
 	public function test_init() {
 		$this->plugin->init();
 		$this->assertTrue( class_exists( __NAMESPACE__ . '\Plugin' ) );
-		$this->assertEquals( 10, has_action( 'init', array( $this->plugin, 'textdomain' ) ) );
 	}
 
 	/**
@@ -58,6 +57,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	 * @see Plugin::load_files().
 	 */
 	public function test_load_files() {
+		$this->assertTrue( class_exists( __NAMESPACE__ . '\Widget_Live_Editor' ) );
 	}
 
 	/**
@@ -67,5 +67,15 @@ class Test_Plugin extends \WP_UnitTestCase {
 	 */
 	public function test_init_classes() {
 		$this->plugin->init_classes();
+	}
+
+	/**
+	 * Test add_actions().
+	 *
+	 * @see Plugin::add_actions().
+	 */
+	public function test_add_actions() {
+		$this->assertEquals( 10, has_action( 'init', array( $this->plugin, 'textdomain' ) ) );
+		$this->assertEquals( 10, has_action( 'widgets_init', array( $this->plugin, 'register_widget' ) ) );
 	}
 }

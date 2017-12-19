@@ -71,7 +71,7 @@ class Plugin {
 		$this->load_files();
 		$this->init_classes();
 		$this->location = plugins_url( self::SLUG );
-		add_action( 'init', array( $this, 'textdomain' ) );
+		$this->add_actions();
 	}
 
 	/**
@@ -80,6 +80,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function load_files() {
+		require_once dirname( __FILE__ ) . '/class-widget-live-editor.php';
 	}
 
 	/**
@@ -91,11 +92,30 @@ class Plugin {
 	}
 
 	/**
+	 * Add the plugin actions.
+	 *
+	 * @return void
+	 */
+	public function add_actions() {
+		add_action( 'init', array( $this, 'textdomain' ) );
+		add_action( 'widgets_init', array( $this, 'register_widget' ) );
+	}
+
+	/**
 	 * Load the plugin's textdomain.
 	 *
 	 * @return void
 	 */
 	public function textdomain() {
 		load_plugin_textdomain( self::SLUG );
+	}
+
+	/**
+	 * Register the Adapter Responsive Video widget.
+	 *
+	 * @return void.
+	 */
+	public function register_widget() {
+		register_widget( __NAMESPACE__ . '\Widget_Live_Editor' );
 	}
 }

@@ -21,6 +21,41 @@ class Test_Widget extends \WP_UnitTestCase {
 	public $instance;
 
 	/**
+	 * Test image value.
+	 *
+	 * @var string
+	 */
+	public $image = '54321';
+
+	/**
+	 * Test heading value.
+	 *
+	 * @var string
+	 */
+	public $heading = 'Example Header';
+
+	/**
+	 * Test copy value.
+	 *
+	 * @var string
+	 */
+	public $copy = 'Baz Copy';
+
+	/**
+	 * Test link value.
+	 *
+	 * @var string
+	 */
+	public $link = 'http://example.com/baz';
+
+	/**
+	 * Test disallowed value.
+	 *
+	 * @var string
+	 */
+	public $disallowed_value = 'example-disallowed-value';
+
+	/**
 	 * Setup.
 	 *
 	 * @inheritdoc
@@ -50,23 +85,29 @@ class Test_Widget extends \WP_UnitTestCase {
 	 * @see Widget_Live_Editor::update().
 	 */
 	public function test_update() {
-		$image            = '54321';
-		$heading          = 'Example Header';
-		$copy             = 'Baz Copy';
-		$link             = 'http://example.com/baz';
 		$disallowed_value = 'example-disallowed-value';
-		$new_instance     = array(
-			Widget_Live_Editor::IMAGE   => $image,
-			Widget_Live_Editor::HEADING => $heading,
-			Widget_Live_Editor::COPY    => $copy,
-			Widget_Live_Editor::LINK    => $link,
-		);
+		$new_instance     = $this->widget_instance();
 		$updated_instance = $this->instance->update( $new_instance, array() );
-		$this->assertEquals( $image, $updated_instance[ Widget_Live_Editor::IMAGE ] );
-		$this->assertEquals( $heading, $updated_instance[ Widget_Live_Editor::HEADING ] );
-		$this->assertEquals( $copy, $updated_instance[ Widget_Live_Editor::COPY ] );
-		$this->assertEquals( $link, $updated_instance[ Widget_Live_Editor::LINK ] );
+		$this->assertEquals( $this->image, $updated_instance[ Widget_Live_Editor::IMAGE ] );
+		$this->assertEquals( $this->heading, $updated_instance[ Widget_Live_Editor::HEADING ] );
+		$this->assertEquals( $this->copy, $updated_instance[ Widget_Live_Editor::COPY ] );
+		$this->assertEquals( $this->link, $updated_instance[ Widget_Live_Editor::URL ] );
 		$this->assertFalse( isset( $updated_instance[ $disallowed_value ] ) );
+	}
+
+	/**
+	 * Test form().
+	 *
+	 * @see Widget_Live_Editor::form().
+	 */
+	public function test_form() {
+		ob_start();
+		$this->instance->form( $this->widget_instance() );
+		$form = ob_get_clean();
+
+		$this->assertContains( $this->image, $form );
+		$this->assertContains( $this->heading, $form );
+		$this->assertContains( $this->copy, $form );
 	}
 
 	/**
@@ -79,6 +120,20 @@ class Test_Widget extends \WP_UnitTestCase {
 		$this->assertTrue( in_array( Widget_Live_Editor::IMAGE, $fields, true ) );
 		$this->assertTrue( in_array( Widget_Live_Editor::HEADING, $fields, true ) );
 		$this->assertTrue( in_array( Widget_Live_Editor::COPY, $fields, true ) );
-		$this->assertTrue( in_array( Widget_Live_Editor::LINK, $fields, true ) );
+		$this->assertTrue( in_array( Widget_Live_Editor::URL, $fields, true ) );
+	}
+
+	/**
+	 * Get a widget instance in order to test update() and form().
+	 *
+	 * @return array $widget Instance of the widget.
+	 */
+	public function widget_instance() {
+		return array(
+			Widget_Live_Editor::IMAGE   => $this->image,
+			Widget_Live_Editor::HEADING => $this->heading,
+			Widget_Live_Editor::COPY    => $this->copy,
+			Widget_Live_Editor::URL     => $this->link,
+		);
 	}
 }
