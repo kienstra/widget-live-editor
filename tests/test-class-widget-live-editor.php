@@ -10,7 +10,7 @@ namespace WidgetLiveEditor;
 /**
  * Test for widget-live-editor.php.
  *
- * @package BootstrapSwipeGallery
+ * @package WidgetLiveEditor
  */
 class Test_Widget_Live_Editor extends \WP_UnitTestCase {
 	/**
