@@ -14,14 +14,64 @@ namespace WidgetLiveEditor;
  */
 class Widget_Live_Editor extends \WP_Widget {
 	/**
+	 * Widget Live Editor ID base.
+	 *
+	 * @const string.
+	 */
+	const ID_BASE = 'widget_live_editor';
+
+	/**
+	 * Widget image field name.
+	 *
+	 * @const string.
+	 */
+	const IMAGE = 'wle_image';
+
+	/**
+	 * Widget heading field name.
+	 *
+	 * @const string.
+	 */
+	const HEADING = 'wle_heading';
+
+	/**
+	 * Widget copy field name.
+	 *
+	 * @const string.
+	 */
+	const COPY = 'wle_copy';
+
+	/**
+	 * Widget link field name.
+	 *
+	 * @const string.
+	 */
+	const URL = 'wle_link';
+
+	/**
+	 * Widget fields.
+	 *
+	 * @var array.
+	 */
+	public $widget_fields = array(
+		'IMAGE',
+		'HEADING',
+		'COPY',
+		'URL',
+	);
+
+	/**
 	 * Instantiate the widget class.
 	 */
 	public function __construct() {
-		$options = array(
-			'classname'   => 'widget-live-editor',
-			'description' => __( 'Live-edit a widget.', 'widget-live-editor' ),
+		parent::__construct(
+			self::ID_BASE,
+			__( 'Widget Live Editor', 'widget-live-editor' ),
+			array(
+				'description'                 => __( 'Live-edit a widget.', 'widget-live-editor' ),
+				'customize_selective_refresh' => true,
+			)
 		);
-		parent::__construct( 'widget_live_editor', __( 'Adapter Video', 'adapter-responsive-video' ), $options );
 	}
 
 	/**
@@ -41,7 +91,11 @@ class Widget_Live_Editor extends \WP_Widget {
 	 * @return array $instance Widget data, updated based on form submission.
 	 */
 	public function update( $new_instance, $previous_instance ) {
-		$instance = $previous_instance;
+		$instance        = array();
+		$field_whitelist = $this->get_fields();
+		foreach ( $field_whitelist as $field ) {
+			$instance[ $field ] = isset( $new_instance[ $field ] ) ? sanitize_text_field( $new_instance[ $field ] ) : '';
+		}
 		return $instance;
 	}
 
@@ -53,5 +107,23 @@ class Widget_Live_Editor extends \WP_Widget {
 	 * @return void.
 	 */
 	public function widget( $args, $instance ) {
+	}
+
+	/**
+	 * Gets a whitelist of fields, to validate user input in update().
+	 *
+	 * Iterates through the values in the class.
+	 * And gets an array of them.
+	 *
+	 * @return array $whitelist An array of strings.
+	 */
+	public function get_fields() {
+		$whitelist = array();
+		$class     = get_class( $this );
+
+		foreach ( $this->widget_fields as $field ) {
+			$whitelist[] = constant( $class . '::' . $field );
+		}
+		return $whitelist;
 	}
 }
