@@ -12,7 +12,7 @@ namespace WidgetLiveEditor;
  *
  * @package WidgetLiveEditor
  */
-class Test_Widget extends \WP_UnitTestCase {
+class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	/**
 	 * Instance of widget.
 	 *
@@ -25,7 +25,7 @@ class Test_Widget extends \WP_UnitTestCase {
 	 *
 	 * @var string
 	 */
-	public $image = '54321';
+	public $image = 'http://example.com/54321';
 
 	/**
 	 * Test heading value.
@@ -102,12 +102,27 @@ class Test_Widget extends \WP_UnitTestCase {
 	 */
 	public function test_form() {
 		ob_start();
-		$this->instance->form( $this->widget_instance() );
+		$instance = $this->widget_instance();
+		$this->instance->form( $instance );
 		$form = ob_get_clean();
 
 		$this->assertContains( $this->image, $form );
 		$this->assertContains( $this->heading, $form );
 		$this->assertContains( $this->copy, $form );
+
+		$this->assertContains( $instance[ Widget_Live_Editor::IMAGE ], $form );
+		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::IMAGE ), $form );
+		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::IMAGE ), $form );
+		$this->assertContains( 'Image', $form );
+
+		$this->assertContains( $instance[ Widget_Live_Editor::HEADING ], $form );
+		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::HEADING ), $form );
+		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::HEADING ), $form );
+		$this->assertContains( 'Heading', $form );
+
+		$this->assertContains( $instance[ Widget_Live_Editor::COPY ], $form );
+		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::COPY ), $form );
+		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::COPY ), $form );
 	}
 
 	/**

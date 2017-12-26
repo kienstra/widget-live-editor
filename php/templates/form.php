@@ -11,7 +11,7 @@ if ( isset( $image_name, $image_label, $image_id ) ) : ?>
 	<p>
 		<label for="<?php echo esc_attr( $image_name ); ?>"><?php echo esc_html( $image_label ); ?></label>
 		<input class="ar-featured-image" type="hidden" value="<?php echo ! empty( $image_src ) ? esc_attr( $image_src ) : ''; ?>" id="<?php echo esc_attr( $image_id ); ?>" class="widefat" name="<?php echo esc_attr( $image_name ); ?>">
-		<img id="<?php echo esc_attr( Widget_Live_Editor::IMAGE_PREVIEW_ID ); ?>" src="<?php echo ! empty( $image_src ) ? esc_url( $image_src ) : ''; ?>">
+		<img id="<?php echo defined( Widget_Live_Editor::IMAGE_PREVIEW_ID ) ? esc_attr( Widget_Live_Editor::IMAGE_PREVIEW_ID ) : ''; ?>" src="<?php echo ! empty( $image_src ) ? esc_url( $image_src ) : ''; ?>">
 	</p>
 <?php endif; ?>
 <button type="button" class="ar-select-image button not-selected">

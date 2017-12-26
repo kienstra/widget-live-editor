@@ -28,6 +28,13 @@ class Widget_Live_Editor extends \WP_Widget {
 	const IMAGE = 'wle_image';
 
 	/**
+	 * ID of the widget image preview.
+	 *
+	 * @const string.
+	 */
+	const IMAGE_PREVIEW_ID = 'wle-preview';
+
+	/**
 	 * Widget heading field name.
 	 *
 	 * @const string.
@@ -84,7 +91,7 @@ class Widget_Live_Editor extends \WP_Widget {
 		$image_src   = isset( $instance[ self::IMAGE ] ) ? $instance[ self::IMAGE ] : '';
 		$image_name  = $this->get_field_name( self::IMAGE );
 		$image_id    = $this->get_field_id( self::IMAGE );
-		$image_label = __( 'Image', 'widget-live-editor' );
+		$image_label = __( 'Image:', 'widget-live-editor' );
 
 		$heading             = isset( $instance[ self::HEADING ] ) ? $instance[ self::HEADING ] : '';
 		$heading_name        = $this->get_field_name( self::HEADING );

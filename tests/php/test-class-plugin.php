@@ -31,9 +31,9 @@ class Test_Plugin extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Test construct().
+	 * Test get_instance().
 	 *
-	 * @see Plugin::__construct().
+	 * @see Plugin::get_instance().
 	 */
 	public function test_get_instance() {
 		$this->assertEquals( Plugin::get_instance(), $this->plugin );
@@ -58,6 +58,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	 */
 	public function test_load_files() {
 		$this->assertTrue( class_exists( __NAMESPACE__ . '\Widget_Live_Editor' ) );
+		$this->assertTrue( class_exists( __NAMESPACE__ . '\Assets' ) );
 	}
 
 	/**
@@ -67,6 +68,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	 */
 	public function test_init_classes() {
 		$this->plugin->init_classes();
+		$this->assertEquals( 10, has_action( 'customize_controls_enqueue_scripts', array( $this->plugin->components->assets, 'enqueue_script' ) ) );
 	}
 
 	/**

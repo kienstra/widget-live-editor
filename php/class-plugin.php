@@ -2,7 +2,7 @@
 /**
  * Main class for the Widget Live Editor plugin
  *
- * @package BootstrapSwipeGallery
+ * @package WidgetLiveEditor
  */
 
 namespace WidgetLiveEditor;
@@ -81,6 +81,7 @@ class Plugin {
 	 */
 	public function load_files() {
 		require_once dirname( __FILE__ ) . '/class-widget-live-editor.php';
+		require_once dirname( __FILE__ ) . '/class-assets.php';
 	}
 
 	/**
@@ -89,6 +90,9 @@ class Plugin {
 	 * @return void
 	 */
 	public function init_classes() {
+		$this->components         = new \stdClass();
+		$this->components->assets = new Assets( $this );
+		$this->components->assets->init();
 	}
 
 	/**
