@@ -1,27 +1,31 @@
 .wle-img-container img {
-  width : auto ;
-  height : auto ;
+	width: auto;
+	height: auto;
 }
 
+/*
+ * Styles for this widget in with the 'Adapter Widget Rows' plugin.
+ * @see https://wordpress.org/plugins/adapter-widget-rows/
+ */
 .awr-row .wle-heading {
-  text-align : center ;
+	text-align: center;
 }
 
 .awr-row .wle-img-container img {
-  margin-right : auto ;
-  margin-left : auto ;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .awr-row .wle-copy-and-link {
-  text-align : center ;
+	text-align: center;
 }
 
-.awr-row .wle-copy-and-link .wle-copy ,
-.awr-row .wle-copy-and-link .wle-link {
-  text-align : left ;
-  display : inline-block ;
+.awr-row .wle-copy ,
+.awr-row .wle-link {
+	text-align: left;
+	display: inline-block;
 }
 
-.awr-row .wle-copy-and-link .wle-copy {
-  max-width : 70% ;
+.awr-row .wle-copy {
+	max-width: 70%;
 }

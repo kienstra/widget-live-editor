@@ -82,10 +82,10 @@ class Widget_Live_Editor extends \WP_Widget {
 	 * @var array.
 	 */
 	public $widget_fields = array(
-		'IMAGE',
-		'HEADING',
-		'COPY',
-		'URL',
+		'IMAGE'   => 'sanitize_text_field',
+		'HEADING' => 'sanitize_text_field',
+		'COPY'    => 'sanitize_text_field',
+		'URL'     => 'wp_kses_post',
 	);
 
 	/**
@@ -140,8 +140,8 @@ class Widget_Live_Editor extends \WP_Widget {
 	public function update( $new_instance, $previous_instance ) {
 		$instance        = array();
 		$field_whitelist = $this->get_fields();
-		foreach ( $field_whitelist as $field ) {
-			$instance[ $field ] = isset( $new_instance[ $field ] ) ? sanitize_text_field( $new_instance[ $field ] ) : '';
+		foreach ( $field_whitelist as $field => $sanitization_callback ) {
+			$instance[ $field ] = isset( $new_instance[ $field ] ) ? call_user_func( $sanitization_callback, $new_instance[ $field ] ) : '';
 		}
 		return $instance;
 	}
@@ -154,6 +154,14 @@ class Widget_Live_Editor extends \WP_Widget {
 	 * @return void.
 	 */
 	public function widget( $args, $instance ) {
+		$image_src = isset( $instance[ self::IMAGE ] ) ? $instance[ self::IMAGE ] : '';
+		$heading   = isset( $instance[ self::HEADING ] ) ? $instance[ self::HEADING ] : '';
+		$copy      = isset( $instance[ self::COPY ] ) ? $instance[ self::COPY ] : '';
+		$link      = isset( $instance[ self::URL ] ) ? $instance[ self::URL ] : '';
+
+		echo wp_kses_post( $args['before_widget'] );
+		include 'templates/widget.php';
+		echo wp_kses_post( $args['after_widget'] );
 	}
 
 	/**
@@ -168,8 +176,8 @@ class Widget_Live_Editor extends \WP_Widget {
 		$whitelist = array();
 		$class     = get_class( $this );
 
-		foreach ( $this->widget_fields as $field ) {
-			$whitelist[] = constant( $class . '::' . $field );
+		foreach ( $this->widget_fields as $field => $sanitization_callback ) {
+			$whitelist[ constant( $class . '::' . $field ) ] = $sanitization_callback;
 		}
 		return $whitelist;
 	}

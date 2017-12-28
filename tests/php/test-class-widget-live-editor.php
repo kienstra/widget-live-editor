@@ -80,22 +80,6 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Test update().
-	 *
-	 * @see Widget_Live_Editor::update().
-	 */
-	public function test_update() {
-		$disallowed_value = 'example-disallowed-value';
-		$new_instance     = $this->widget_instance();
-		$updated_instance = $this->instance->update( $new_instance, array() );
-		$this->assertEquals( $this->image, $updated_instance[ Widget_Live_Editor::IMAGE ] );
-		$this->assertEquals( $this->heading, $updated_instance[ Widget_Live_Editor::HEADING ] );
-		$this->assertEquals( $this->copy, $updated_instance[ Widget_Live_Editor::COPY ] );
-		$this->assertEquals( $this->link, $updated_instance[ Widget_Live_Editor::URL ] );
-		$this->assertFalse( isset( $updated_instance[ $disallowed_value ] ) );
-	}
-
-	/**
 	 * Test form().
 	 *
 	 * @see Widget_Live_Editor::form().
@@ -109,6 +93,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertContains( $this->image, $form );
 		$this->assertContains( $this->heading, $form );
 		$this->assertContains( $this->copy, $form );
+		$this->assertContains( $this->link, $form );
 
 		$this->assertContains( $instance[ Widget_Live_Editor::IMAGE ], $form );
 		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::IMAGE ), $form );
@@ -130,16 +115,49 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	}
 
 	/**
+	 * Test update().
+	 *
+	 * @see Widget_Live_Editor::update().
+	 */
+	public function test_update() {
+		$disallowed_value = 'example-disallowed-value';
+		$new_instance     = $this->widget_instance();
+		$updated_instance = $this->instance->update( $new_instance, array() );
+		$this->assertEquals( $this->image, $updated_instance[ Widget_Live_Editor::IMAGE ] );
+		$this->assertEquals( $this->heading, $updated_instance[ Widget_Live_Editor::HEADING ] );
+		$this->assertEquals( $this->copy, $updated_instance[ Widget_Live_Editor::COPY ] );
+		$this->assertEquals( $this->link, $updated_instance[ Widget_Live_Editor::URL ] );
+		$this->assertFalse( isset( $updated_instance[ $disallowed_value ] ) );
+	}
+
+	/**
+	 * Test widget().
+	 *
+	 * @see Widget_Live_Editor::widget().
+	 */
+	public function test_widget() {
+		ob_start();
+		$instance = $this->widget_instance();
+		$this->instance->widget( array(), $instance );
+		$widget = ob_get_clean();
+
+		$this->assertContains( $this->image, $widget );
+		$this->assertContains( $this->heading, $widget );
+		$this->assertContains( $this->copy, $widget );
+		$this->assertContains( $this->link, $widget );
+	}
+
+	/**
 	 * Test get_fields().
 	 *
 	 * @see Widget_Live_Editor::__construct().
 	 */
 	public function test_get_fields() {
 		$fields = $this->instance->get_fields();
-		$this->assertTrue( in_array( Widget_Live_Editor::IMAGE, $fields, true ) );
-		$this->assertTrue( in_array( Widget_Live_Editor::HEADING, $fields, true ) );
-		$this->assertTrue( in_array( Widget_Live_Editor::COPY, $fields, true ) );
-		$this->assertTrue( in_array( Widget_Live_Editor::URL, $fields, true ) );
+		$this->assertEquals( 'sanitize_text_field', $fields[ Widget_Live_Editor::IMAGE ] );
+		$this->assertEquals( 'sanitize_text_field', $fields[ Widget_Live_Editor::HEADING ] );
+		$this->assertEquals( 'sanitize_text_field', $fields[ Widget_Live_Editor::COPY ] );
+		$this->assertEquals( 'wp_kses_post', $fields[ Widget_Live_Editor::URL ] );
 	}
 
 	/**
