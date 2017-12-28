@@ -123,6 +123,10 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertContains( $instance[ Widget_Live_Editor::COPY ], $form );
 		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::COPY ), $form );
 		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::COPY ), $form );
+
+		$this->assertContains( $instance[ Widget_Live_Editor::URL ], $form );
+		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::URL ), $form );
+		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::URL ), $form );
 	}
 
 	/**

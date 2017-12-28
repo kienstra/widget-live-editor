@@ -32,7 +32,28 @@ class Widget_Live_Editor extends \WP_Widget {
 	 *
 	 * @const string.
 	 */
-	const IMAGE_PREVIEW_ID = 'wle-preview';
+	const IMAGE_PREVIEW = 'wle-preview';
+
+	/**
+	 * Class of the image <input>.
+	 *
+	 * @const string.
+	 */
+	const IMAGE_INPUT = 'wle-input';
+
+	/**
+	 * Class of the backdrop that indicates there's no image.
+	 *
+	 * @const string.
+	 */
+	const NO_IMAGE = 'attachment-media-view';
+
+	/**
+	 * Class of the image <button>.
+	 *
+	 * @const string.
+	 */
+	const IMAGE_BUTTON = 'wle-select-image';
 
 	/**
 	 * Widget heading field name.
@@ -101,6 +122,10 @@ class Widget_Live_Editor extends \WP_Widget {
 		$copy      = isset( $instance[ self::COPY ] ) ? $instance[ self::COPY ] : '';
 		$copy_name = $this->get_field_name( self::COPY );
 		$copy_id   = $this->get_field_id( self::COPY );
+
+		$link      = isset( $instance[ self::URL ] ) ? $instance[ self::URL ] : '';
+		$link_name = $this->get_field_name( self::URL );
+		$link_id   = $this->get_field_id( self::URL );
 
 		include 'templates/form.php';
 	}

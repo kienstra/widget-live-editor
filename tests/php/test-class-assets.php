@@ -78,4 +78,33 @@ class Test_Assets extends \WP_UnitTestCase {
 		$this->instance->enqueue_script();
 		$this->assertTrue( in_array( Assets::SCRIPT, wp_scripts()->queue, true ) );
 	}
+
+	/**
+	 * Test inline_script().
+	 *
+	 * @see Assets::inline_script().
+	 */
+	public function test_inline_script() {
+		$this->instance->inline_script();
+		$inline_script      = wp_scripts()->registered[ Assets::SCRIPT ]->extra['after'][1];
+		$expected_in_script = array(
+			'imagePreviewClass',
+			Widget_Live_Editor::IMAGE_PREVIEW,
+			Widget_Live_Editor::IMAGE_INPUT,
+			Widget_Live_Editor::NO_IMAGE,
+			Widget_Live_Editor::IMAGE_BUTTON,
+			'l10n',
+			'title',
+			'Please select an image.',
+			'Change Image',
+			'Use this image',
+			'Add Link',
+			'replaceLink',
+			'Change Link',
+		);
+
+		foreach ( $expected_in_script as $expected ) {
+			$this->assertContains( $expected, $inline_script );
+		}
+	}
 }
