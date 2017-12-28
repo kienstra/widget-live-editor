@@ -93,6 +93,8 @@ class Test_Assets extends \WP_UnitTestCase {
 			Widget_Live_Editor::IMAGE_INPUT,
 			Widget_Live_Editor::NO_IMAGE,
 			Widget_Live_Editor::IMAGE_BUTTON,
+			Widget_Live_Editor::URL_INPUT,
+			Widget_Live_Editor::URL_BUTTON,
 			'l10n',
 			'title',
 			'Please select an image.',

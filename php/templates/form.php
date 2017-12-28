@@ -20,7 +20,7 @@ if ( isset( $image_name, $image_label, $image_id ) && defined( __NAMESPACE__ . '
 			</div>
 		<?php endif; ?>
 	</p>
-	<button type="button" class="<?php echo esc_attr( Widget_Live_Editor::IMAGE_BUTTON ); ?> button not-selected">
+	<button type="button" class="<?php echo defined( __NAMESPACE__ . '\Widget_Live_Editor::IMAGE_BUTTON' ) ? esc_attr( Widget_Live_Editor::IMAGE_BUTTON ) : ''; ?> button not-selected">
 		<?php empty( $image_src ) ? esc_html_e( 'Select Image', 'widget-live-editor' ) : esc_html_e( 'Replace Image', 'widget-live-editor' ); ?>
 	</button>
 <?php endif; ?>
@@ -39,9 +39,9 @@ if ( isset( $image_name, $image_label, $image_id ) && defined( __NAMESPACE__ . '
 <?php if ( isset( $link_name, $link_id ) ) : ?>
 	<p>
 		<label for="<?php echo esc_attr( $link_name ); ?>"><?php esc_html_e( 'Link:', 'widget-live-editor' ); ?></label>
-		<input class="wle-link" type="text" value="<?php echo ! empty( $link ) ? esc_url( $link ) : ''; ?>" id="<?php echo esc_attr( $link_id ); ?>" name="<?php echo esc_attr( $link_name ); ?>">
+		<input name="<?php echo esc_attr( $link_name ); ?>" class="<?php echo defined( __NAMESPACE__ . '\Widget_Live_Editor::URL_INPUT' ) ? esc_attr( Widget_Live_Editor::URL_INPUT ) : ''; ?>" type="text" value="<?php echo ! empty( $link ) ? esc_url( $link ) : ''; ?>" id="<?php echo esc_attr( $link_id ); ?>">
 	</p>
-	<button type="button" class="wle-select-link button not-selected">
+	<button type="button" class="<?php echo defined( __NAMESPACE__ . '\Widget_Live_Editor::URL_BUTTON' ) ? esc_attr( Widget_Live_Editor::URL_BUTTON ) : ''; ?> button not-selected">
 		<?php empty( $link ) ? esc_html_e( 'Add Link', 'widget-live-editor' ) : esc_html_e( 'Replace Link', 'widget-live-editor' ); ?>
 	</button>
 <?php endif; ?>

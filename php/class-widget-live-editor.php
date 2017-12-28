@@ -28,7 +28,7 @@ class Widget_Live_Editor extends \WP_Widget {
 	const IMAGE = 'wle_image';
 
 	/**
-	 * ID of the widget image preview.
+	 * Class of the widget image preview.
 	 *
 	 * @const string.
 	 */
@@ -75,6 +75,20 @@ class Widget_Live_Editor extends \WP_Widget {
 	 * @const string.
 	 */
 	const URL = 'wle_link';
+
+	/**
+	 * Class of the <input> for the link.
+	 *
+	 * @const string.
+	 */
+	const URL_INPUT = 'wle-select-link';
+
+	/**
+	 * Class of the <button> to select the link.
+	 *
+	 * @const string.
+	 */
+	const URL_BUTTON = 'wle-select-link';
 
 	/**
 	 * Widget fields.

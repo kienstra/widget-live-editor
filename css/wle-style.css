@@ -1,31 +1,32 @@
-.wle-img-container img {
+.c-wle__img {
 	width: auto;
 	height: auto;
+	max-height: 300px
 }
 
 /*
  * Styles for this widget in with the 'Adapter Widget Rows' plugin.
  * @see https://wordpress.org/plugins/adapter-widget-rows/
  */
-.awr-row .wle-heading {
+.awr-row .c-wle__heading {
 	text-align: center;
 }
 
-.awr-row .wle-img-container img {
+.awr-row .c-wle__img {
 	margin-right: auto;
 	margin-left: auto;
 }
 
-.awr-row .wle-copy-and-link {
+.awr-row .l-footer__cta {
 	text-align: center;
 }
 
-.awr-row .wle-copy ,
+.awr-row .c-wle__copy,
 .awr-row .wle-link {
 	text-align: left;
 	display: inline-block;
 }
 
-.awr-row .wle-copy {
+.awr-row .c-wle__copy {
 	max-width: 70%;
 }

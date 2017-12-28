@@ -112,6 +112,11 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertContains( $instance[ Widget_Live_Editor::URL ], $form );
 		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::URL ), $form );
 		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::URL ), $form );
+
+		$this->assertContains( Widget_Live_Editor::IMAGE_PREVIEW, $form );
+		$this->assertContains( Widget_Live_Editor::IMAGE_INPUT, $form );
+		$this->assertContains( Widget_Live_Editor::IMAGE_BUTTON, $form );
+		$this->assertContains( Widget_Live_Editor::URL_BUTTON, $form );
 	}
 
 	/**
@@ -136,15 +141,21 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	 * @see Widget_Live_Editor::widget().
 	 */
 	public function test_widget() {
-		ob_start();
 		$instance = $this->widget_instance();
-		$this->instance->widget( array(), $instance );
+		$arguments = array(
+			'before_widget' => '<div class="foo">',
+			'after_widget'  => '<div class="bar">',
+		);
+		ob_start();
+		$this->instance->widget( $arguments, $instance );
 		$widget = ob_get_clean();
 
 		$this->assertContains( $this->image, $widget );
 		$this->assertContains( $this->heading, $widget );
 		$this->assertContains( $this->copy, $widget );
 		$this->assertContains( $this->link, $widget );
+		$this->assertContains( $arguments['before_widget'], $widget );
+		$this->assertContains( $arguments['after_widget'], $widget );
 	}
 
 	/**
