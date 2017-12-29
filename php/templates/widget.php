@@ -8,7 +8,7 @@
 namespace WidgetLiveEditor;
 
 ?>
-<div class="c-wle">
+<div class="c-wle<?php echo ! empty( $align ) ? esc_attr( ' ' . $align ) : ''; ?>">
 	<div>
 		<img class="c-wle__img img-customize img-responsive" src="<?php echo ! empty( $image_src ) ? esc_attr( $image_src ) : ''; ?>">
 	</div>

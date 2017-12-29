@@ -49,6 +49,13 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	public $link = 'http://example.com/baz';
 
 	/**
+	 * Test left alignment value.
+	 *
+	 * @var string
+	 */
+	public $align = Field::ALIGN_CENTER;
+
+	/**
 	 * Test disallowed value.
 	 *
 	 * @var string
@@ -113,10 +120,18 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertContains( $this->instance->get_field_name( Field::URL ), $form );
 		$this->assertContains( $this->instance->get_field_id( Field::URL ), $form );
 
+		$this->assertContains( Field::ALIGN_LEFT, $form );
+		$this->assertContains( $this->instance->get_field_name( Field::ALIGN ), $form );
+		$this->assertContains( $this->instance->get_field_id( Field::ALIGN ), $form );
+		$this->assertContains( 'checked', $form );
+		$this->assertContains( Field::ALIGN_CENTER, $form );
+
 		$this->assertContains( Field::IMAGE_PREVIEW, $form );
 		$this->assertContains( Field::IMAGE_INPUT, $form );
 		$this->assertContains( Field::IMAGE_BUTTON, $form );
 		$this->assertContains( Field::URL_BUTTON, $form );
+		$this->assertContains( Field::ALIGN_LEFT, $form );
+		$this->assertContains( Field::ALIGN_CENTER, $form );
 	}
 
 	/**
@@ -132,6 +147,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertEquals( $this->heading, $updated_instance[ Field::HEADING ] );
 		$this->assertEquals( $this->copy, $updated_instance[ Field::COPY ] );
 		$this->assertEquals( $this->link, $updated_instance[ Field::URL ] );
+		$this->assertEquals( $this->align, $updated_instance[ Field::ALIGN ] );
 		$this->assertFalse( isset( $updated_instance[ $disallowed_value ] ) );
 	}
 
@@ -154,6 +170,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertContains( $this->heading, $widget );
 		$this->assertContains( $this->copy, $widget );
 		$this->assertContains( $this->link, $widget );
+		$this->assertContains( $this->align, $widget );
 		$this->assertContains( $arguments['before_widget'], $widget );
 		$this->assertContains( $arguments['after_widget'], $widget );
 	}
@@ -169,6 +186,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 			Field::HEADING => $this->heading,
 			Field::COPY    => $this->copy,
 			Field::URL     => $this->link,
+			Field::ALIGN   => $this->align,
 		);
 	}
 }

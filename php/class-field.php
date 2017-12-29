@@ -68,6 +68,27 @@ class Field {
 	const URL = 'wle_link';
 
 	/**
+	 * Class of the <button> to select the link.
+	 *
+	 * @const string.
+	 */
+	const ALIGN = 'wle_align';
+
+	/**
+	 * Class of the <button> to select the link.
+	 *
+	 * @const string.
+	 */
+	const ALIGN_LEFT = 'align-left';
+
+	/**
+	 * Class of the <button> to select the link.
+	 *
+	 * @const string.
+	 */
+	const ALIGN_CENTER = 'align-center';
+
+	/**
 	 * Class of the <input> for the link.
 	 *
 	 * @const string.
@@ -91,6 +112,7 @@ class Field {
 		'HEADING' => 'sanitize_text_field',
 		'COPY'    => 'sanitize_text_field',
 		'URL'     => 'wp_kses_post',
+		'ALIGN'   => 'sanitize_text_field',
 	);
 
 	/**

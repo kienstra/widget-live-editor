@@ -59,6 +59,10 @@ class Widget_Live_Editor extends \WP_Widget {
 		$link_name = $this->get_field_name( Field::URL );
 		$link_id   = $this->get_field_id( Field::URL );
 
+		$align      = isset( $instance[ Field::ALIGN ] ) ? $instance[ Field::ALIGN ] : '';
+		$align_name = $this->get_field_name( Field::ALIGN );
+		$align_id   = $this->get_field_id( Field::ALIGN );
+
 		include 'templates/form.php';
 	}
 
@@ -90,6 +94,7 @@ class Widget_Live_Editor extends \WP_Widget {
 		$heading   = isset( $instance[ Field::HEADING ] ) ? $instance[ Field::HEADING ] : '';
 		$copy      = isset( $instance[ Field::COPY ] ) ? $instance[ Field::COPY ] : '';
 		$link      = isset( $instance[ Field::URL ] ) ? $instance[ Field::URL ] : '';
+		$align     = isset( $instance[ Field::ALIGN ] ) && ( Field::ALIGN_CENTER === $instance[ Field::ALIGN ] ) ? Field::ALIGN_CENTER : '';
 
 		echo wp_kses_post( $args['before_widget'] );
 		include 'templates/widget.php';

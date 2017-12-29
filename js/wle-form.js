@@ -1,5 +1,4 @@
 /* global wpLink */
-
 /**
  * In the widget form, enable the Media Library and link modals.
  *
@@ -55,7 +54,7 @@ var wleWidget = ( function( $ ) { // jshint ignore:line
 		 * @returns {void}
 		 */
 		addImageHandler: function() {
-			$( document ).on( 'click', '.wle-select-image', function( event ) {
+			$( document ).on( 'click', '.' + module.data.imageButtonClass, function( event ) {
 				module.setWidget( event.target );
 				module.initFrame();
 			} );

@@ -43,6 +43,7 @@ class Test_Field extends \WP_UnitTestCase {
 			'HEADING' => 'sanitize_text_field',
 			'COPY'    => 'sanitize_text_field',
 			'URL'     => 'wp_kses_post',
+			'ALIGN'   => 'sanitize_text_field',
 		);
 		$this->assertEquals( $widget_fields, $this->instance->widget_fields );
 		$this->assertEquals( __NAMESPACE__ . '\Field', get_class( $this->instance ) );
