@@ -1,6 +1,6 @@
 <?php
 /**
- * Assets class.
+ * Asset class.
  *
  * @package WidgetLiveEditor
  */
@@ -8,9 +8,9 @@
 namespace WidgetLiveEditor;
 
 /**
- * Assets class
+ * Asset class
  */
-class Assets {
+class Asset {
 	/**
 	 * Instance of the plugin.
 	 *
