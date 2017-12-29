@@ -74,12 +74,12 @@ class Assets {
 			sprintf(
 				'wleWidget.init( %s );',
 				wp_json_encode( array(
-					'imagePreviewClass' => Widget_Live_Editor::IMAGE_PREVIEW,
-					'imageInputClass'   => Widget_Live_Editor::IMAGE_INPUT,
-					'noImageClass'      => Widget_Live_Editor::NO_IMAGE,
-					'imageButtonClass'  => Widget_Live_Editor::IMAGE_BUTTON,
-					'linkInputClass'    => Widget_Live_Editor::URL_INPUT,
-					'linkButtonClass'   => Widget_Live_Editor::URL_BUTTON,
+					'imagePreviewClass' => Field::IMAGE_PREVIEW,
+					'imageInputClass'   => Field::IMAGE_INPUT,
+					'noImageClass'      => Field::NO_IMAGE,
+					'imageButtonClass'  => Field::IMAGE_BUTTON,
+					'linkInputClass'    => Field::URL_INPUT,
+					'linkButtonClass'   => Field::URL_BUTTON,
 					'l10n'              => array(
 						'title'       => __( 'Please select an image.', 'widget-live-editor' ),
 						'changeImage' => __( 'Change Image', 'widget-live-editor' ),

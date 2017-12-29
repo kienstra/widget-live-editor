@@ -95,28 +95,28 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertContains( $this->copy, $form );
 		$this->assertContains( $this->link, $form );
 
-		$this->assertContains( $instance[ Widget_Live_Editor::IMAGE ], $form );
-		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::IMAGE ), $form );
-		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::IMAGE ), $form );
+		$this->assertContains( $instance[ Field::IMAGE ], $form );
+		$this->assertContains( $this->instance->get_field_name( Field::IMAGE ), $form );
+		$this->assertContains( $this->instance->get_field_id( Field::IMAGE ), $form );
 		$this->assertContains( 'Image', $form );
 
-		$this->assertContains( $instance[ Widget_Live_Editor::HEADING ], $form );
-		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::HEADING ), $form );
-		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::HEADING ), $form );
+		$this->assertContains( $instance[ Field::HEADING ], $form );
+		$this->assertContains( $this->instance->get_field_name( Field::HEADING ), $form );
+		$this->assertContains( $this->instance->get_field_id( Field::HEADING ), $form );
 		$this->assertContains( 'Heading', $form );
 
-		$this->assertContains( $instance[ Widget_Live_Editor::COPY ], $form );
-		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::COPY ), $form );
-		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::COPY ), $form );
+		$this->assertContains( $instance[ Field::COPY ], $form );
+		$this->assertContains( $this->instance->get_field_name( Field::COPY ), $form );
+		$this->assertContains( $this->instance->get_field_id( Field::COPY ), $form );
 
-		$this->assertContains( $instance[ Widget_Live_Editor::URL ], $form );
-		$this->assertContains( $this->instance->get_field_name( Widget_Live_Editor::URL ), $form );
-		$this->assertContains( $this->instance->get_field_id( Widget_Live_Editor::URL ), $form );
+		$this->assertContains( $instance[ Field::URL ], $form );
+		$this->assertContains( $this->instance->get_field_name( Field::URL ), $form );
+		$this->assertContains( $this->instance->get_field_id( Field::URL ), $form );
 
-		$this->assertContains( Widget_Live_Editor::IMAGE_PREVIEW, $form );
-		$this->assertContains( Widget_Live_Editor::IMAGE_INPUT, $form );
-		$this->assertContains( Widget_Live_Editor::IMAGE_BUTTON, $form );
-		$this->assertContains( Widget_Live_Editor::URL_BUTTON, $form );
+		$this->assertContains( Field::IMAGE_PREVIEW, $form );
+		$this->assertContains( Field::IMAGE_INPUT, $form );
+		$this->assertContains( Field::IMAGE_BUTTON, $form );
+		$this->assertContains( Field::URL_BUTTON, $form );
 	}
 
 	/**
@@ -128,10 +128,10 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$disallowed_value = 'example-disallowed-value';
 		$new_instance     = $this->widget_instance();
 		$updated_instance = $this->instance->update( $new_instance, array() );
-		$this->assertEquals( $this->image, $updated_instance[ Widget_Live_Editor::IMAGE ] );
-		$this->assertEquals( $this->heading, $updated_instance[ Widget_Live_Editor::HEADING ] );
-		$this->assertEquals( $this->copy, $updated_instance[ Widget_Live_Editor::COPY ] );
-		$this->assertEquals( $this->link, $updated_instance[ Widget_Live_Editor::URL ] );
+		$this->assertEquals( $this->image, $updated_instance[ Field::IMAGE ] );
+		$this->assertEquals( $this->heading, $updated_instance[ Field::HEADING ] );
+		$this->assertEquals( $this->copy, $updated_instance[ Field::COPY ] );
+		$this->assertEquals( $this->link, $updated_instance[ Field::URL ] );
 		$this->assertFalse( isset( $updated_instance[ $disallowed_value ] ) );
 	}
 
@@ -159,29 +159,16 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	}
 
 	/**
-	 * Test get_fields().
-	 *
-	 * @see Widget_Live_Editor::__construct().
-	 */
-	public function test_get_fields() {
-		$fields = $this->instance->get_fields();
-		$this->assertEquals( 'sanitize_text_field', $fields[ Widget_Live_Editor::IMAGE ] );
-		$this->assertEquals( 'sanitize_text_field', $fields[ Widget_Live_Editor::HEADING ] );
-		$this->assertEquals( 'sanitize_text_field', $fields[ Widget_Live_Editor::COPY ] );
-		$this->assertEquals( 'wp_kses_post', $fields[ Widget_Live_Editor::URL ] );
-	}
-
-	/**
 	 * Get a widget instance in order to test update() and form().
 	 *
 	 * @return array $widget Instance of the widget.
 	 */
 	public function widget_instance() {
 		return array(
-			Widget_Live_Editor::IMAGE   => $this->image,
-			Widget_Live_Editor::HEADING => $this->heading,
-			Widget_Live_Editor::COPY    => $this->copy,
-			Widget_Live_Editor::URL     => $this->link,
+			Field::IMAGE   => $this->image,
+			Field::HEADING => $this->heading,
+			Field::COPY    => $this->copy,
+			Field::URL     => $this->link,
 		);
 	}
 }

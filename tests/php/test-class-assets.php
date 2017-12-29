@@ -89,12 +89,12 @@ class Test_Assets extends \WP_UnitTestCase {
 		$inline_script      = wp_scripts()->registered[ Assets::SCRIPT ]->extra['after'][1];
 		$expected_in_script = array(
 			'imagePreviewClass',
-			Widget_Live_Editor::IMAGE_PREVIEW,
-			Widget_Live_Editor::IMAGE_INPUT,
-			Widget_Live_Editor::NO_IMAGE,
-			Widget_Live_Editor::IMAGE_BUTTON,
-			Widget_Live_Editor::URL_INPUT,
-			Widget_Live_Editor::URL_BUTTON,
+			Field::IMAGE_PREVIEW,
+			Field::IMAGE_INPUT,
+			Field::NO_IMAGE,
+			Field::IMAGE_BUTTON,
+			Field::URL_INPUT,
+			Field::URL_BUTTON,
 			'l10n',
 			'title',
 			'Please select an image.',

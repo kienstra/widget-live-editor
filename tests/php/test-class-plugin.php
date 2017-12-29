@@ -59,6 +59,7 @@ class Test_Plugin extends \WP_UnitTestCase {
 	public function test_load_files() {
 		$this->assertTrue( class_exists( __NAMESPACE__ . '\Widget_Live_Editor' ) );
 		$this->assertTrue( class_exists( __NAMESPACE__ . '\Assets' ) );
+		$this->assertTrue( class_exists( __NAMESPACE__ . '\Field' ) );
 	}
 
 	/**

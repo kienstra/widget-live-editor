@@ -82,6 +82,7 @@ class Plugin {
 	public function load_files() {
 		require_once dirname( __FILE__ ) . '/class-widget-live-editor.php';
 		require_once dirname( __FILE__ ) . '/class-assets.php';
+		require_once dirname( __FILE__ ) . '/class-field.php';
 	}
 
 	/**
@@ -93,6 +94,7 @@ class Plugin {
 		$this->components         = new \stdClass();
 		$this->components->assets = new Assets( $this );
 		$this->components->assets->init();
+		$this->components->field = new Field( $this );
 	}
 
 	/**
