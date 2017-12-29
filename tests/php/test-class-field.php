@@ -40,6 +40,7 @@ class Test_Field extends \WP_UnitTestCase {
 	public function test_construct() {
 		$widget_fields = array(
 			'IMAGE'   => 'sanitize_text_field',
+			'WIDTH'   => 'sanitize_text_field',
 			'HEADING' => 'sanitize_text_field',
 			'COPY'    => 'sanitize_text_field',
 			'URL'     => 'wp_kses_post',

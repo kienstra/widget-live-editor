@@ -19,6 +19,13 @@ class Field {
 	const IMAGE = 'wle_image';
 
 	/**
+	 * Widget image width field name.
+	 *
+	 * @const string.
+	 */
+	const WIDTH = 'wle_width';
+
+	/**
 	 * Class of the widget image preview.
 	 *
 	 * @const string.
@@ -109,6 +116,7 @@ class Field {
 	 */
 	public $widget_fields = array(
 		'IMAGE'   => 'sanitize_text_field',
+		'WIDTH'   => 'sanitize_text_field',
 		'HEADING' => 'sanitize_text_field',
 		'COPY'    => 'sanitize_text_field',
 		'URL'     => 'wp_kses_post',

@@ -24,6 +24,12 @@ if ( isset( $image_name, $image_label, $image_id ) && defined( __NAMESPACE__ . '
 		<?php empty( $image_src ) ? esc_html_e( 'Select Image', 'widget-live-editor' ) : esc_html_e( 'Replace Image', 'widget-live-editor' ); ?>
 	</button>
 <?php endif; ?>
+<?php if ( isset( $width, $width_name, $width_id ) ) : ?>
+	<p>
+		<label for="<?php echo esc_attr( $width_name ); ?>"><?php esc_html_e( 'Image Width:', 'widget-live-editor' ); ?></label>
+		<input type="range" name="<?php echo esc_attr( $width_name ); ?>" id="<?php echo esc_attr( $width_id ); ?>" value="<?php echo esc_attr( $width ); ?>">
+	</p>
+<?php endif; ?>
 <?php if ( isset( $heading_name, $heading_placeholder, $heading_id ) ) : ?>
 	<p>
 		<label for="<?php echo esc_attr( $heading_name ); ?>"><?php esc_html_e( 'Heading:', 'widget-live-editor' ); ?></label>

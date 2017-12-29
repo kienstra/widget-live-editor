@@ -36,7 +36,6 @@ class Asset {
 	 * Instantiate this class.
 	 *
 	 * @param object $plugin Instance of the plugin.
-	 * @return void
 	 */
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
@@ -111,7 +110,7 @@ class Asset {
 	 */
 	public function enqueue_style() {
 		$this->register_style();
-		if ( is_active_widget( false, false, PLUGIN::SLUG ) || is_customize_preview() ) {
+		if ( is_active_widget( false, false, Widget_Live_Editor::ID_BASE ) || is_customize_preview() ) {
 			wp_enqueue_style( self::STYLE );
 		}
 	}

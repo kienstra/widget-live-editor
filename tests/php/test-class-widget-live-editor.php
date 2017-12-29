@@ -28,6 +28,13 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	public $image = 'http://example.com/54321';
 
 	/**
+	 * Test image value.
+	 *
+	 * @var string
+	 */
+	public $width = '80';
+
+	/**
 	 * Test heading value.
 	 *
 	 * @var string
@@ -107,6 +114,10 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertContains( $this->instance->get_field_id( Field::IMAGE ), $form );
 		$this->assertContains( 'Image', $form );
 
+		$this->assertContains( $instance[ Field::WIDTH ], $form );
+		$this->assertContains( $this->instance->get_field_name( Field::WIDTH ), $form );
+		$this->assertContains( $this->instance->get_field_id( Field::WIDTH ), $form );
+
 		$this->assertContains( $instance[ Field::HEADING ], $form );
 		$this->assertContains( $this->instance->get_field_name( Field::HEADING ), $form );
 		$this->assertContains( $this->instance->get_field_id( Field::HEADING ), $form );
@@ -167,6 +178,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$widget = ob_get_clean();
 
 		$this->assertContains( $this->image, $widget );
+		$this->assertContains( $this->width, $widget );
 		$this->assertContains( $this->heading, $widget );
 		$this->assertContains( $this->copy, $widget );
 		$this->assertContains( $this->link, $widget );
@@ -183,6 +195,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	public function widget_instance() {
 		return array(
 			Field::IMAGE   => $this->image,
+			Field::WIDTH   => $this->width,
 			Field::HEADING => $this->heading,
 			Field::COPY    => $this->copy,
 			Field::URL     => $this->link,

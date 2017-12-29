@@ -1,17 +1,16 @@
-.c-wle__img {
-	width: auto;
-	height: auto;
-	max-height: 300px
-}
-
-/*
- * Styles for the center alignment of this widget.
+/**
+ * Styling for center alignment of the widget.
+ *
+ * On choosing the radio <input> to align the widget to the center,
+ * it applies the class 'align-center.'
  */
+
 .align-center .c-wle__heading {
 	text-align: center;
 }
 
 .align-center .c-wle__img {
+	display: block;
 	margin-right: auto;
 	margin-left: auto;
 }

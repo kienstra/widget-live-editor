@@ -46,6 +46,10 @@ class Widget_Live_Editor extends \WP_Widget {
 		$image_id    = $this->get_field_id( Field::IMAGE );
 		$image_label = __( 'Image:', 'widget-live-editor' );
 
+		$width      = isset( $instance[ Field::WIDTH ] ) ? $instance[ Field::WIDTH ] : '';
+		$width_name = $this->get_field_name( Field::WIDTH );
+		$width_id   = $this->get_field_id( Field::WIDTH );
+
 		$heading             = isset( $instance[ Field::HEADING ] ) ? $instance[ Field::HEADING ] : '';
 		$heading_name        = $this->get_field_name( Field::HEADING );
 		$heading_id          = $this->get_field_id( Field::HEADING );
@@ -91,6 +95,7 @@ class Widget_Live_Editor extends \WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$image_src = isset( $instance[ Field::IMAGE ] ) ? $instance[ Field::IMAGE ] : '';
+		$width     = isset( $instance[ Field::WIDTH ] ) ? $instance[ Field::WIDTH ] : '';
 		$heading   = isset( $instance[ Field::HEADING ] ) ? $instance[ Field::HEADING ] : '';
 		$copy      = isset( $instance[ Field::COPY ] ) ? $instance[ Field::COPY ] : '';
 		$link      = isset( $instance[ Field::URL ] ) ? $instance[ Field::URL ] : '';
