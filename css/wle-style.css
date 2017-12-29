@@ -5,28 +5,27 @@
 }
 
 /*
- * Styles for this widget in with the 'Adapter Widget Rows' plugin.
- * @see https://wordpress.org/plugins/adapter-widget-rows/
+ * Styles for the center alignment of this widget.
  */
-.awr-row .c-wle__heading {
+.align-center .c-wle__heading {
 	text-align: center;
 }
 
-.awr-row .c-wle__img {
+.align-center .c-wle__img {
 	margin-right: auto;
 	margin-left: auto;
 }
 
-.awr-row .l-footer__cta {
+.align-center .l-footer__cta {
 	text-align: center;
 }
 
-.awr-row .c-wle__copy,
-.awr-row .wle-link {
+.align-center .c-wle__copy,
+.align-center .wle-link {
 	text-align: left;
 	display: inline-block;
 }
 
-.awr-row .c-wle__copy {
+.align-center .c-wle__copy {
 	max-width: 70%;
 }

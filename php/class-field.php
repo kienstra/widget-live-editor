@@ -30,7 +30,7 @@ class Field {
 	 *
 	 * @const string.
 	 */
-	const IMAGE_INPUT = 'wle-input';
+	const IMAGE_INPUT = 'wle-image-input';
 
 	/**
 	 * Class of the backdrop that indicates there's no image.
@@ -72,7 +72,7 @@ class Field {
 	 *
 	 * @const string.
 	 */
-	const URL_INPUT = 'wle-select-link';
+	const URL_INPUT = 'wle-link-input';
 
 	/**
 	 * Class of the <button> to select the link.

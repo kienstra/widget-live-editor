@@ -26,6 +26,13 @@ class Assets {
 	const SCRIPT = 'wle-script';
 
 	/**
+	 * Slug of the script.
+	 *
+	 * @const string
+	 */
+	const STYLE = 'wle-style';
+
+	/**
 	 * Instantiate this class.
 	 *
 	 * @param object $plugin Instance of the plugin.
@@ -43,6 +50,7 @@ class Assets {
 	public function init() {
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'enqueue_script' ) );
 		add_action( 'customize_controls_enqueue_scripts', array( $this, 'inline_script' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_style' ) );
 	}
 
 	/**
@@ -90,5 +98,30 @@ class Assets {
 				) )
 			)
 		);
+	}
+
+	/**
+	 * Enqueue widget stylesheet if this widget is active, or if it's in the Customizer.
+	 *
+	 * It mainly sets the display for center-alignment.
+	 * This is an option on the widget controls.
+	 * The default is left-alignment.
+	 *
+	 * @return void
+	 */
+	public function enqueue_style() {
+		$this->register_style();
+		if ( is_active_widget( false, false, PLUGIN::SLUG ) || is_customize_preview() ) {
+			wp_enqueue_style( self::STYLE );
+		}
+	}
+
+	/**
+	 * Enqueue widget stylesheet.
+	 *
+	 * @return void
+	 */
+	public function register_style() {
+		wp_register_style( self::STYLE, $this->plugin->location . '/css/wle-style.css', array(), Plugin::VERSION );
 	}
 }

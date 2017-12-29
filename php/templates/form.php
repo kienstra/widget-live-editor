@@ -41,7 +41,9 @@ if ( isset( $image_name, $image_label, $image_id ) && defined( __NAMESPACE__ . '
 		<label for="<?php echo esc_attr( $link_name ); ?>"><?php esc_html_e( 'Link:', 'widget-live-editor' ); ?></label>
 		<input name="<?php echo esc_attr( $link_name ); ?>" class="<?php echo defined( __NAMESPACE__ . '\Field::URL_INPUT' ) ? esc_attr( Field::URL_INPUT ) : ''; ?>" type="text" value="<?php echo ! empty( $link ) ? esc_url( $link ) : ''; ?>" id="<?php echo esc_attr( $link_id ); ?>">
 	</p>
-	<button type="button" class="<?php echo defined( __NAMESPACE__ . '\Field::URL_BUTTON' ) ? esc_attr( Field::URL_BUTTON ) : ''; ?> button not-selected">
-		<?php empty( $link ) ? esc_html_e( 'Add Link', 'widget-live-editor' ) : esc_html_e( 'Replace Link', 'widget-live-editor' ); ?>
-	</button>
+	<p>
+		<button type="button" class="<?php echo defined( __NAMESPACE__ . '\Field::URL_BUTTON' ) ? esc_attr( Field::URL_BUTTON ) : ''; ?> button not-selected">
+			<?php empty( $link ) ? esc_html_e( 'Add Link', 'widget-live-editor' ) : esc_html_e( 'Replace Link', 'widget-live-editor' ); ?>
+		</button>
+	</p>
 <?php endif; ?>

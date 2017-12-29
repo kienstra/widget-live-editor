@@ -52,6 +52,7 @@ class Test_Assets extends \WP_UnitTestCase {
 		$this->instance->init();
 		$this->assertEquals( 10, has_action( 'customize_controls_enqueue_scripts', array( $this->instance, 'enqueue_script' ) ) );
 		$this->assertEquals( 10, has_action( 'customize_controls_enqueue_scripts', array( $this->instance, 'inline_script' ) ) );
+		$this->assertEquals( 10, has_action( 'wp_enqueue_scripts', array( $this->instance, 'enqueue_style' ) ) );
 	}
 
 	/**
@@ -108,5 +109,40 @@ class Test_Assets extends \WP_UnitTestCase {
 		foreach ( $expected_in_script as $expected ) {
 			$this->assertContains( $expected, $inline_script );
 		}
+	}
+
+	/**
+	 * Test enqueue_style().
+	 *
+	 * @see Assets::enqueue_style().
+	 */
+	public function test_enqueue_style() {
+		global $wp_customize;
+		require_once ABSPATH . WPINC . '/class-wp-customize-manager.php';
+		$wp_customize = new \WP_Customize_Manager(); // WPCS: global override OK.
+		$this->instance->enqueue_style();
+
+		// The style should not be enqueued, because the widget isn't active, and is_customize_preview() is false.
+		$this->assertFalse( in_array( Assets::STYLE, wp_styles()->queue, true ) );
+
+		// Ensure that is_customize_preview() is true, so this enqueues the stylesheet.
+		$wp_customize->start_previewing_theme();
+		$this->instance->enqueue_style();
+		$this->assertTrue( in_array( Assets::STYLE, wp_styles()->queue, true ) );
+	}
+
+	/**
+	 * Test register_style().
+	 *
+	 * @see Assets::enqueue_style().
+	 */
+	public function test_register_style() {
+		$this->instance->register_style();
+		$style = wp_styles()->registered[ Assets::STYLE ];
+		$this->assertEquals( '_WP_Dependency', get_class( $style ) );
+		$this->assertEquals( array(), $style->deps );
+		$this->assertEquals( Assets::STYLE, $style->handle );
+		$this->assertEquals( $this->instance->plugin->location . '/css/wle-style.css', $style->src );
+		$this->assertEquals( Plugin::VERSION, $style->ver );
 	}
 }
