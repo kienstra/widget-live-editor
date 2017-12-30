@@ -27,7 +27,7 @@ if ( isset( $image_name, $image_label, $image_id ) && defined( __NAMESPACE__ . '
 <?php if ( isset( $width, $width_name, $width_id ) ) : ?>
 	<p>
 		<label for="<?php echo esc_attr( $width_name ); ?>"><?php esc_html_e( 'Image Width:', 'widget-live-editor' ); ?></label>
-		<input type="range" name="<?php echo esc_attr( $width_name ); ?>" id="<?php echo esc_attr( $width_id ); ?>" value="<?php echo esc_attr( $width ); ?>">
+		<input type="range" name="<?php echo esc_attr( $width_name ); ?>" id="<?php echo esc_attr( $width_id ); ?>" value="<?php echo esc_attr( $width ); ?>" style="display:block">
 	</p>
 <?php endif; ?>
 <?php if ( isset( $heading_name, $heading_placeholder, $heading_id ) ) : ?>

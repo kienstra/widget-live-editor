@@ -91,7 +91,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function init_classes() {
-		$this->components         = new \stdClass();
+		$this->components        = new \stdClass();
 		$this->components->asset = new Asset( $this );
 		$this->components->asset->init();
 		$this->components->field = new Field( $this );
