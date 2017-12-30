@@ -19,7 +19,7 @@ A flexible widget, with an image, headline, copy, and link. Resize the image, an
 * Flexible: Each widget can have an image, heading, text, and/or a link. One widget could be only an image and a link to your "Contact" page. Or only a heading, text, and a link to a blog post.
 * Responsive: Looks good at any size. Perfect for Bootstrap themes, where widgets can have most of the content. Use vector images for retina displays.
 
-[youtube www.youtube.com/watch?v=DDtClYx9BgY]
+[![Play video on YouTube](https://i1.ytimg.com/vi/OgmzJCEGBf0/hqdefault.jpg)](https://www.youtube.com/watch?v=OgmzJCEGBf0)
 
 ## Installation ##
 
