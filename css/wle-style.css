@@ -1,9 +1,13 @@
 /**
- * Styling for center alignment of the widget.
+ * Styling, mainly for center-alignment of the widget.
  *
  * On choosing the radio <input> to align the widget to the center,
  * it applies the class 'align-center.'
  */
+
+.c-wle__heading {
+	padding-top: 0.5em;
+}
 
 .align-center .c-wle__heading {
 	text-align: center;
