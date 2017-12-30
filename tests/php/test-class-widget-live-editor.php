@@ -168,7 +168,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 	 * @see Widget_Live_Editor::widget().
 	 */
 	public function test_widget() {
-		$instance = $this->widget_instance();
+		$instance  = $this->widget_instance();
 		$arguments = array(
 			'before_widget' => '<div class="foo">',
 			'after_widget'  => '<div class="bar">',
