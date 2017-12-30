@@ -24,7 +24,7 @@ var wleWidget = ( function( $ ) { // jshint ignore:line
 		frame: {},
 
 		/**
-		 * jQuery-wrapped widget element.
+		 * A jQuery-wrapped widget element.
 		 *
 		 * Markup for the Widget Live Editor widget controls.
 		 * Ensures that the handlers apply to the right widget.
