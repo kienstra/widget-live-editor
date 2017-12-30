@@ -10,6 +10,7 @@ A flexible widget, with an image, headline, copy, and link. Resize the image, an
 **Stable tag:** 1.0.4  
 **License:** [GPLv2 or later](http://www.gnu.org/licenses/gpl-2.0.html)  
 **Donate link:** http://jdrf.org/get-involved/ways-to-donate/  
+**Requires PHP:** 5.4  
 
 [![Build Status](https://travis-ci.org/kienstra/widget-live-editor.svg?branch=master)](https://travis-ci.org/kienstra/widget-live-editor) 
 
