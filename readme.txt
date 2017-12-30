@@ -8,7 +8,7 @@ Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A flexible widget, where you enter an image, a headline, copy, and a link. Resize the image, link to any page or post.
+A flexible widget, with an image, headline, copy, and link. Resize the image, and link to any page or post.
 
 == Description ==
 
@@ -21,13 +21,13 @@ A flexible widget, where you enter an image, a headline, copy, and a link. Resiz
 == Installation ==
 
 1. Download the plugin in /wp-admin by selecting "Plugins" > "Add New."
-1. Or upload the plugin's widget-live-editor directory to your /wp-content/plugins directory.
+1. Or upload the plugin to your plugins/ directory.
 1. In the "Plugins" menu, find "Widget Live Editor," and click "Activate." 
 1. Click "Appearance" > "Customize."
 1. Click "Widgets" > "Add a Widget."
 1. Add a "Widget Live Editor" widget.
 1. Select an image, enter text, and select a link.
-1. Observe your widget displaying in the Customize preview.
+1. Observe your widget displaying in the Customizer preview.
 
 == Frequently Asked Questions ==
 

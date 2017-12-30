@@ -10,7 +10,7 @@ namespace WidgetLiveEditor;
 /*
 Plugin Name: Widget Live Editor
 Plugin URI: www.ryankienstra.com/plugins/widget-live-editor
-Description: See instant updates as you edit. Select and resize images and vectors. Enter text, and link to any page or post.
+Description: A flexible widget, with an image, headline, copy, and link. Resize the image, and link to any page or post.
 Version: 1.0.4
 Author: Ryan Kienstra
 Author URI: http://ryankienstra.com
