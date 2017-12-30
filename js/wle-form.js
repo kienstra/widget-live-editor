@@ -1,10 +1,12 @@
 /* global wpLink */
+
 /**
  * In the widget form, enable the Media Library and link modals.
  *
  * On clicking a <button>, open the Media Library to select an image.
  * And on clicking the link <button>, open the 'Insert/edit link' modal.
  */
+/* eslint-disable no-alert, no-unused-vars */
 var wleWidget = ( function( $ ) { // jshint ignore:line
 	'use strict';
 

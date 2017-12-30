@@ -39,6 +39,9 @@ class Test_Plugin extends \WP_UnitTestCase {
 		$this->assertEquals( Plugin::get_instance(), $this->plugin );
 		$this->assertEquals( __NAMESPACE__ . '\Plugin', get_class( Plugin::get_instance() ) );
 		$this->assertEquals( plugins_url( Plugin::SLUG ), $this->plugin->location );
+
+		Plugin::$instance = null;
+		$this->assertEquals( __NAMESPACE__ . '\Plugin', get_class( Plugin::get_instance() ) );
 	}
 
 	/**
@@ -78,7 +81,29 @@ class Test_Plugin extends \WP_UnitTestCase {
 	 * @see Plugin::add_actions().
 	 */
 	public function test_add_actions() {
+		$this->plugin->add_actions();
 		$this->assertEquals( 10, has_action( 'init', array( $this->plugin, 'textdomain' ) ) );
 		$this->assertEquals( 10, has_action( 'widgets_init', array( $this->plugin, 'register_widget' ) ) );
+	}
+
+	/**
+	 * Test textdomain().
+	 *
+	 * @see Plugin::textdomain().
+	 */
+	public function test_textdomain() {
+		$this->plugin->textdomain();
+		$this->assertNotEquals( false, did_action( 'load_textdomain' ) );
+	}
+
+	/**
+	 * Test register_widget().
+	 *
+	 * @see Plugin::register_widget().
+	 */
+	public function test_register_widget() {
+		global $wp_widget_factory;
+		$this->plugin->register_widget();
+		$this->assertEquals( __NAMESPACE__ . '\Widget_Live_Editor', get_class( $wp_widget_factory->widgets['WidgetLiveEditor\Widget_Live_Editor'] ) );
 	}
 }
