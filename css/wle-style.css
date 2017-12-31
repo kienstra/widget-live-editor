@@ -1,27 +1,34 @@
-.wle-img-container img {
-  width : auto ;
-  height : auto ;
+/**
+ * Styling, mainly for center-alignment of the widget.
+ *
+ * On choosing the radio <input> to align the widget to the center,
+ * it applies the class 'align-center.'
+ */
+
+.c-wle__heading {
+	padding-top: 0.5em;
 }
 
-.awr-row .wle-heading {
-  text-align : center ;
+.align-center .c-wle__heading {
+	text-align: center;
 }
 
-.awr-row .wle-img-container img {
-  margin-right : auto ;
-  margin-left : auto ;
+.align-center .c-wle__img {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
 }
 
-.awr-row .wle-copy-and-link {
-  text-align : center ;
+.align-center .l-footer__cta {
+	text-align: center;
 }
 
-.awr-row .wle-copy-and-link .wle-copy ,
-.awr-row .wle-copy-and-link .wle-link {
-  text-align : left ;
-  display : inline-block ;
+.align-center .c-wle__copy,
+.align-center .wle-link {
+	text-align: left;
+	display: inline-block;
 }
 
-.awr-row .wle-copy-and-link .wle-copy {
-  max-width : 70% ;
+.align-center .c-wle__copy {
+	max-width: 70%;
 }
