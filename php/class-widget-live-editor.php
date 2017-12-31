@@ -28,7 +28,7 @@ class Widget_Live_Editor extends \WP_Widget {
 			self::ID_BASE,
 			__( 'Widget Live Editor', 'widget-live-editor' ),
 			array(
-				'description'                 => __( 'Live-edit a widget.', 'widget-live-editor' ),
+				'description'                 => __( 'An image, text, and a link, with adjustable size and alignment.', 'widget-live-editor' ),
 				'customize_selective_refresh' => true,
 			)
 		);

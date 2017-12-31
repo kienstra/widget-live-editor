@@ -83,7 +83,7 @@ class Test_Class_Widget_Live_Editor extends \WP_UnitTestCase {
 		$this->assertEquals( Widget_Live_Editor::ID_BASE, $this->instance->id_base );
 		$this->assertEquals( 'Widget Live Editor', $this->instance->name );
 		$this->assertTrue( $this->instance->widget_options['customize_selective_refresh'] );
-		$this->assertEquals( 'Live-edit a widget.', $this->instance->widget_options['description'] );
+		$this->assertEquals( 'An image, text, and a link, with adjustable size and alignment.', $this->instance->widget_options['description'] );
 	}
 
 	/**
