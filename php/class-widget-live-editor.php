@@ -46,7 +46,7 @@ class Widget_Live_Editor extends \WP_Widget {
 		$image_id    = $this->get_field_id( Field::IMAGE );
 		$image_label = __( 'Image:', 'widget-live-editor' );
 
-		$width      = isset( $instance[ Field::WIDTH ] ) ? $instance[ Field::WIDTH ] : '';
+		$width      = isset( $instance[ Field::WIDTH ] ) ? $instance[ Field::WIDTH ] : Field::DEFAULT_WIDTH;
 		$width_name = $this->get_field_name( Field::WIDTH );
 		$width_id   = $this->get_field_id( Field::WIDTH );
 
@@ -95,11 +95,11 @@ class Widget_Live_Editor extends \WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$image_src = isset( $instance[ Field::IMAGE ] ) ? $instance[ Field::IMAGE ] : '';
-		$width     = isset( $instance[ Field::WIDTH ] ) ? $instance[ Field::WIDTH ] : '';
+		$width     = isset( $instance[ Field::WIDTH ] ) ? $instance[ Field::WIDTH ] : Field::DEFAULT_WIDTH;
 		$heading   = isset( $instance[ Field::HEADING ] ) ? $instance[ Field::HEADING ] : '';
 		$copy      = isset( $instance[ Field::COPY ] ) ? $instance[ Field::COPY ] : '';
 		$link      = isset( $instance[ Field::URL ] ) ? $instance[ Field::URL ] : '';
-		$align     = isset( $instance[ Field::ALIGN ] ) && ( Field::ALIGN_CENTER === $instance[ Field::ALIGN ] ) ? Field::ALIGN_CENTER : '';
+		$align     = isset( $instance[ Field::ALIGN ] ) && ( Field::ALIGN_CENTER === $instance[ Field::ALIGN ] ) ? Field::ALIGN_CENTER : Field::ALIGN_LEFT;
 
 		echo wp_kses_post( $args['before_widget'] );
 		include 'templates/widget.php';

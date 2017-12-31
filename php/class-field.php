@@ -26,6 +26,13 @@ class Field {
 	const WIDTH = 'wle_width';
 
 	/**
+	 * Default widget image max-width.
+	 *
+	 * @const string.
+	 */
+	const DEFAULT_WIDTH = '100';
+
+	/**
 	 * Class of the widget image preview.
 	 *
 	 * @const string.
