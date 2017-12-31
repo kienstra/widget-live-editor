@@ -16,7 +16,7 @@ class Plugin {
 	 *
 	 * @var string
 	 */
-	const VERSION = '1.0.3';
+	const VERSION = '1.0.4';
 
 	/**
 	 * Plugin slug.
@@ -119,7 +119,7 @@ class Plugin {
 	/**
 	 * Register the Adapter Responsive Video widget.
 	 *
-	 * @return void.
+	 * @return void
 	 */
 	public function register_widget() {
 		register_widget( __NAMESPACE__ . '\Widget_Live_Editor' );
